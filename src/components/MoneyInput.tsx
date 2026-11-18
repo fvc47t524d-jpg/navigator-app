@@ -8,6 +8,7 @@ import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { Portal } from '@gorhom/portal';
 import { debounce } from '../utils';
 import { currencies, getCurrency } from '../utils/currencies';
+import { translate as t } from '../utils/localize';
 
 const MoneyInput = ({
     value: _value,
@@ -17,7 +18,7 @@ const MoneyInput = ({
     type = 'volume',
     snapTo = '100%',
     backgroundColor = '$surface',
-    placeholder = 'Input amount',
+    placeholder = t('MoneyInput.placeholder'),
     wrapperProps = {},
     portalHost = 'MainPortal',
     onBottomSheetPositionChanged,
@@ -179,7 +180,7 @@ const MoneyInput = ({
                     <YStack px='$2'>
                         <BottomSheetTextInput
                             ref={searchInputRef}
-                            placeholder='Search currencies'
+                            placeholder={t('MoneyInput.search')}
                             onChangeText={setSearchTerm}
                             autoCapitalize='none'
                             autoComplete='off'

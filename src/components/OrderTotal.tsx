@@ -4,6 +4,7 @@ import { FlatList } from 'react-native';
 import { Text, YStack, XStack, Separator, useTheme } from 'tamagui';
 import { formatCurrency, numbersOnly } from '../utils/format';
 import { percentage } from '../utils/math';
+import { translate as t } from '../utils/localize';
 
 const calculateTip = (tip, subtotal) => {
     let amount = tip;
@@ -41,14 +42,14 @@ const OrderTotal = ({ order }) => {
 
         if (deliveryFee && !isPickup) {
             items.push({
-                name: 'Delivery Fee',
+                name: t('OrderTotal.deliveryFee'),
                 value: deliveryFee,
             });
         }
 
         if (deliveryTip) {
             items.push({
-                name: 'Delivery Tip',
+                name: t('OrderTotal.deliveryTip'),
                 value: calculateTip(deliveryTip, subtotal),
                 tip: deliveryTip,
             });

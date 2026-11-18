@@ -6,6 +6,7 @@ import { YStack, Text, Input, Switch, Button } from 'tamagui';
 import { useConfig } from '../contexts/ConfigContext';
 import { toBoolean } from '../utils';
 import useAppTheme from '../hooks/use-app-theme';
+import { translate as t } from '../utils/localize';
 
 const InstanceLinkScreen = () => {
     const navigation = useNavigation();
@@ -25,7 +26,7 @@ const InstanceLinkScreen = () => {
         setInstanceLinkConfig('SOCKETCLUSTER_PORT', socketClusterPort);
         setInstanceLinkConfig('SOCKETCLUSTER_SECURE', socketClusterSecure);
 
-        Alert.alert('Instance connection config saved successfully.');
+        Alert.alert(t('InstanceLinkScreen.saved'));
     }, [setInstanceLinkConfig, fleetbaseHost, fleetbaseKey, socketClusterHost, socketClusterPort, socketClusterSecure]);
 
     const handleReset = useCallback(() => {
@@ -35,7 +36,7 @@ const InstanceLinkScreen = () => {
         setSocketClusterHost(null);
         setSocketClusterPort(null);
         setSocketClusterSecure(null);
-        Alert.alert('Instance connection config reset successfully.');
+        Alert.alert(t('InstanceLinkScreen.reset'));
     }, [clearInstanceLinkConfig, setFleetbaseHost, setFleetbaseKey, setSocketClusterHost, setSocketClusterPort, setSocketClusterSecure]);
 
     return (
@@ -49,7 +50,7 @@ const InstanceLinkScreen = () => {
                         <Input
                             value={fleetbaseHost}
                             onChangeText={(text) => setFleetbaseHost(text)}
-                            placeholder='Input host of Fleetbase instance...'
+                            placeholder={t('InstanceLinkScreen.hostPlaceholder')}
                             borderWidth={1}
                             color='$textPrimary'
                             borderColor='$borderColor'
@@ -68,7 +69,7 @@ const InstanceLinkScreen = () => {
                         <Input
                             value={fleetbaseKey}
                             onChangeText={(text) => setFleetbaseKey(text)}
-                            placeholder='Input API Key for Fleetbase instance...'
+                            placeholder={t('InstanceLinkScreen.keyPlaceholder')}
                             borderWidth={1}
                             color='$textPrimary'
                             borderColor='$borderColor'
@@ -87,7 +88,7 @@ const InstanceLinkScreen = () => {
                         <Input
                             value={socketClusterHost}
                             onChangeText={(text) => setSocketClusterHost(text)}
-                            placeholder='Input SocketCluster host for Fleetbase instance...'
+                            placeholder={t('InstanceLinkScreen.socketHostPlaceholder')}
                             borderWidth={1}
                             color='$textPrimary'
                             borderColor='$borderColor'
@@ -106,7 +107,7 @@ const InstanceLinkScreen = () => {
                         <Input
                             value={socketClusterPort}
                             onChangeText={(text) => setSocketClusterPort(text)}
-                            placeholder='Input SocketCluster port for Fleetbase instance...'
+                            placeholder={t('InstanceLinkScreen.socketPortPlaceholder')}
                             keyboardType='phone-pad'
                             borderWidth={1}
                             color='$textPrimary'
@@ -141,12 +142,12 @@ const InstanceLinkScreen = () => {
                 <YStack space='$3' pb={insets.bottom}>
                     <Button onPress={handleSave} size='$5' bg='$info' borderColor='$infoBorder' borderWidth={1} flex={1}>
                         <Button.Text color='$infoText' fontWeight='bold' fontSize='$5'>
-                            Save Changes
+                            {t('InstanceLinkScreen.saveChanges')}
                         </Button.Text>
                     </Button>
                     <Button onPress={handleReset} size='$5' bg='$default' borderColor='$defaultBorder' borderWidth={1} flex={1}>
                         <Button.Text color='$defaultText' fontWeight='bold' fontSize='$5'>
-                            Reset
+                            {t('common.reset')}
                         </Button.Text>
                     </Button>
                 </YStack>

@@ -16,6 +16,7 @@ import useFleetbase from '../hooks/use-fleetbase';
 import { useAppTheme } from '../hooks/use-app-theme';
 import ExpandableSelect from '../components/ExpandableSelect';
 import PlaceMapView from '../components/PlaceMapView';
+import { translate as t } from '../utils/localize';
 
 const LocationPropertyInput = ({ value, onChange, placeholder }) => {
     return (
@@ -120,7 +121,7 @@ const EditLocationScreen = ({ route }) => {
     const handleSavePlace = async () => {
         try {
             await runWithLoading(addLocation(getUpdatedPlace(), makeDefault), 'saving');
-            toast.success('Address saved.', { position: ToastPosition.bottom });
+            toast.success(t('EditLocationScreen.saved'), { position: ToastPosition.bottom });
             handleRedirect();
         } catch (error) {
             console.log('Error saving address details:', error);
@@ -173,18 +174,18 @@ const EditLocationScreen = ({ route }) => {
         try {
             setPlace({ ...place, type });
         } catch (error) {
-            toast.error('Unable to select location type.', { position: ToastPosition.bottom });
+            toast.error(t('EditLocationScreen.typeError'), { position: ToastPosition.bottom });
         }
     };
 
     const types = [
-        { id: 1, title: 'Apartment', type: 'apartment', icon: <FontAwesomeIcon icon={faBuildingUser} color={theme.textSecondary.val} /> },
-        { id: 2, title: 'House', type: 'house', icon: <FontAwesomeIcon icon={faHouse} color={theme.textSecondary.val} /> },
-        { id: 3, title: 'Office', type: 'office', icon: <FontAwesomeIcon icon={faBuilding} color={theme.textSecondary.val} /> },
-        { id: 4, title: 'Hotel', type: 'hotel', icon: <FontAwesomeIcon icon={faHotel} color={theme.textSecondary.val} /> },
-        { id: 5, title: 'Hospital', type: 'hospital', icon: <FontAwesomeIcon icon={faHospital} color={theme.textSecondary.val} /> },
-        { id: 6, title: 'School', type: 'school', icon: <FontAwesomeIcon icon={faSchool} color={theme.textSecondary.val} /> },
-        { id: 7, title: 'Other', type: 'other', icon: <FontAwesomeIcon icon={faChair} color={theme.textSecondary.val} /> },
+        { id: 1, title: t('EditLocationScreen.apartment'), type: 'apartment', icon: <FontAwesomeIcon icon={faBuildingUser} color={theme.textSecondary.val} /> },
+        { id: 2, title: t('EditLocationScreen.house'), type: 'house', icon: <FontAwesomeIcon icon={faHouse} color={theme.textSecondary.val} /> },
+        { id: 3, title: t('EditLocationScreen.office'), type: 'office', icon: <FontAwesomeIcon icon={faBuilding} color={theme.textSecondary.val} /> },
+        { id: 4, title: t('EditLocationScreen.hotel'), type: 'hotel', icon: <FontAwesomeIcon icon={faHotel} color={theme.textSecondary.val} /> },
+        { id: 5, title: t('EditLocationScreen.hospital'), type: 'hospital', icon: <FontAwesomeIcon icon={faHospital} color={theme.textSecondary.val} /> },
+        { id: 6, title: t('EditLocationScreen.school'), type: 'school', icon: <FontAwesomeIcon icon={faSchool} color={theme.textSecondary.val} /> },
+        { id: 7, title: t('EditLocationScreen.other'), type: 'other', icon: <FontAwesomeIcon icon={faChair} color={theme.textSecondary.val} /> },
     ];
 
     return (
@@ -194,7 +195,7 @@ const EditLocationScreen = ({ route }) => {
                     <YStack space='$2'>
                         <XStack py='$1' justifyContent='space-between'>
                             <Text fontSize='$8' fontWeight='bold' color='$textPrimary' numberOfLines={1}>
-                                Address
+                                {t('EditLocationScreen.address')}
                             </Text>
                         </XStack>
                         <XStack width='100%'>
@@ -206,7 +207,7 @@ const EditLocationScreen = ({ route }) => {
                     <YStack space='$2'>
                         <XStack py='$1' justifyContent='space-between'>
                             <Text fontSize='$8' fontWeight='bold' color='$textPrimary' numberOfLines={1}>
-                                Location Type
+                                {t('EditLocationScreen.locationType')}
                             </Text>
                         </XStack>
                         <YStack width='100%'>
@@ -217,80 +218,80 @@ const EditLocationScreen = ({ route }) => {
                         <YStack space='$4'>
                             <YStack py='$1' space='$2' justifyContent='space-between'>
                                 <Text fontSize='$8' fontWeight='bold' color='$textPrimary' numberOfLines={1}>
-                                    Address Details
+                                    {t('EditLocationScreen.details')}
                                 </Text>
                                 <Text fontSize='$4' color='$textSecondary' numberOfLines={1}>
-                                    Add additional address details.
+                                    {t('EditLocationScreen.detailsHint')}
                                 </Text>
                             </YStack>
                             <YStack space='$4'>
                                 <YStack>
                                     <XStack mb='$2'>
                                         <Text fontSize='$3' fontWeight='bold' color='$textSecondary' mr='$2'>
-                                            Address label or name
+                                            {t('EditLocationScreen.name')}
                                         </Text>
                                         <FontAwesomeIcon icon={faAsterisk} color={'red'} size={12} />
                                     </XStack>
-                                    <LocationPropertyInput value={name} onChange={setName} placeholder='Address label or name' />
+                                    <LocationPropertyInput value={name} onChange={setName} placeholder={t('EditLocationScreen.name')} />
                                 </YStack>
                                 <YStack>
                                     <XStack mb='$2'>
                                         <Text fontSize='$3' fontWeight='bold' color='$textSecondary' mr='$2'>
-                                            Street address or P.O. Box
+                                            {t('EditLocationScreen.street1')}
                                         </Text>
                                         <FontAwesomeIcon icon={faAsterisk} color={'red'} size={12} />
                                     </XStack>
-                                    <LocationPropertyInput value={street1} onChange={setStreet1} placeholder='Street address or P.O. Box' />
+                                    <LocationPropertyInput value={street1} onChange={setStreet1} placeholder={t('EditLocationScreen.street1')} />
                                 </YStack>
                                 <YStack>
                                     <Text fontSize='$3' fontWeight='bold' color='$textSecondary' mb='$2'>
-                                        Apt, suite, unit, building, floor, etc.
+                                        {t('EditLocationScreen.street2')}
                                     </Text>
-                                    <LocationPropertyInput value={street2} onChange={setStreet2} placeholder='Apt, suite, unit, building, floor, etc.' />
+                                    <LocationPropertyInput value={street2} onChange={setStreet2} placeholder={t('EditLocationScreen.street2')} />
                                     <Text fontSize='$1' color='$textSecondary' mt='$2'>
-                                        Optional
+                                        {t('common.optional')}
                                     </Text>
                                 </YStack>
                                 <YStack>
                                     <Text fontSize='$3' fontWeight='bold' color='$textSecondary' mb='$2'>
-                                        Neighborhood
+                                        {t('EditLocationScreen.neighborhood')}
                                     </Text>
-                                    <LocationPropertyInput value={neighborhood} onChange={setNeighborhood} placeholder='Neighborhood' />
+                                    <LocationPropertyInput value={neighborhood} onChange={setNeighborhood} placeholder={t('EditLocationScreen.neighborhood')} />
                                     <Text fontSize='$1' color='$textSecondary' mt='$2' px='$2'>
-                                        Optional
+                                        {t('common.optional')}
                                     </Text>
                                 </YStack>
                                 <YStack>
                                     <Text fontSize='$3' fontWeight='bold' color='$textSecondary' mb='$2'>
-                                        City or town
+                                        {t('EditLocationScreen.city')}
                                     </Text>
-                                    <LocationPropertyInput value={city} onChange={setCity} placeholder='City or town' />
+                                    <LocationPropertyInput value={city} onChange={setCity} placeholder={t('EditLocationScreen.city')} />
                                     <Text fontSize='$1' color='$textSecondary' mt='$2' px='$2'>
-                                        Optional
+                                        {t('common.optional')}
                                     </Text>
                                 </YStack>
                                 <YStack>
                                     <Text fontSize='$3' fontWeight='bold' color='$textSecondary' mb='$2'>
-                                        Postal or zip code
+                                        {t('EditLocationScreen.postalCode')}
                                     </Text>
-                                    <LocationPropertyInput value={postalCode} onChange={setPostalCode} placeholder='Postal or zip code' />
+                                    <LocationPropertyInput value={postalCode} onChange={setPostalCode} placeholder={t('EditLocationScreen.postalCode')} />
                                     <Text fontSize='$1' color='$textSecondary' mt='$2' px='$2'>
-                                        Optional
+                                        {t('common.optional')}
                                     </Text>
                                 </YStack>
                                 <YStack width='100%'>
                                     <Text fontSize='$3' fontWeight='bold' color='$textSecondary' mb='$2'>
-                                        Additional instructions for the courier
+                                        {t('EditLocationScreen.instructions')}
                                     </Text>
-                                    <LocationPropertyInput value={instructions} onChange={setInstructions} placeholder='Additional instructions for the courier' />
+                                    <LocationPropertyInput value={instructions} onChange={setInstructions} placeholder={t('EditLocationScreen.instructions')} />
                                     <Text fontSize='$1' color='$textSecondary' mt='$2' px='$2'>
-                                        Optional
+                                        {t('common.optional')}
                                     </Text>
                                 </YStack>
                                 <YStack>
                                     <XStack paddingVertical='$3' justifyContent='space-between'>
                                         <Text fontSize='$6' fontWeight='bold' color='$textPrimary' numberOfLines={1}>
-                                            Where exactly should we meet you?
+                                            {t('EditLocationScreen.meetingPoint')}
                                         </Text>
                                     </XStack>
                                     <PlaceMapView onPress={handleLocationSelect} place={place} height={140} zoom={2} />
@@ -318,7 +319,7 @@ const EditLocationScreen = ({ route }) => {
                                             >
                                                 <Button.Icon>{isLoading('defaulting') && <Spinner color='$blue-100' />}</Button.Icon>
                                                 <Button.Text color='$blue-100' fontWeight='bold' fontSize='$5'>
-                                                    Make Default Address
+                                                    {t('EditLocationScreen.makeDefault')}
                                                 </Button.Text>
                                             </Button>
                                         )}
@@ -341,7 +342,7 @@ const EditLocationScreen = ({ route }) => {
                                         >
                                             <Button.Icon>{isLoading('deleting') && <Spinner color='$red-100' />}</Button.Icon>
                                             <Button.Text color='$red-100' fontWeight='bold' fontSize='$5'>
-                                                Delete Address
+                                                {t('EditLocationScreen.delete')}
                                             </Button.Text>
                                         </Button>
                                     </YStack>
@@ -370,7 +371,7 @@ const EditLocationScreen = ({ route }) => {
                 >
                     <Button.Icon>{isLoading('saving') && <Spinner color='$green-100' />}</Button.Icon>
                     <Button.Text color='$green-100' fontWeight='bold' fontSize='$5'>
-                        Save Address
+                        {t('EditLocationScreen.save')}
                     </Button.Text>
                 </Button>
             </XStack>

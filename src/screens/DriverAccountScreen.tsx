@@ -13,6 +13,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import useAppTheme from '../hooks/use-app-theme';
 import DeviceInfo from 'react-native-device-info';
 import storage from '../utils/storage';
+import { translate as t } from '../utils/localize';
 
 const DriverAccountScreen = () => {
     const theme = useTheme();
@@ -243,7 +244,7 @@ const DriverAccountScreen = () => {
             onPress: () => navigation.navigate('EditAccountProperty', { property: { name: t('AccountScreen.name'), key: 'name', component: 'input' } }),
         },
         {
-            title: 'Language',
+            title: t('AccountScreen.language'),
             rightComponent: (
                 <Text color='$textSecondary' opacity={0.5}>
                     {language.native}

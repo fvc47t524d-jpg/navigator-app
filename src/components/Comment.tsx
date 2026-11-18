@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faReply, faPenToSquare, faTrash, faSave } from '@fortawesome/free-solid-svg-icons';
 import { formatDistanceToNow } from 'date-fns';
 import useFleetbase from '../hooks/use-fleetbase';
+import { translate as t } from '../utils/localize';
 
 const Comment = ({ comment: _comment, reloadComments, isCommentInvalid }) => {
     const theme = useTheme();
@@ -18,10 +19,10 @@ const Comment = ({ comment: _comment, reloadComments, isCommentInvalid }) => {
     const [isDeleting, setIsDeleting] = useState(false);
 
     const handleDelete = useCallback(() => {
-        Alert.alert('Delete Comment', 'Are you sure you want to delete this comment?', [
-            { text: 'Cancel', style: 'cancel' },
+        Alert.alert(t('Comment.deleteTitle'), t('Comment.deleteMessage'), [
+            { text: t('common.cancel'), style: 'cancel' },
             {
-                text: 'Delete',
+                text: t('common.delete'),
                 style: 'destructive',
                 onPress: async () => {
                     setIsDeleting(true);
@@ -96,7 +97,7 @@ const Comment = ({ comment: _comment, reloadComments, isCommentInvalid }) => {
                                 <TextArea value={editContent} onChangeText={setEditContent} width='100%' borderWidth={1} borderColor='$borderColor' minHeight={100} disabled={isLoading} />
                                 <XStack justifyContent='flex-end' alignItems='center' marginTop='$2' space='$1'>
                                     <Button onPress={() => setEditing(false)} size='$3' disabled={isLoading} opacity={isLoading ? 0.75 : 1}>
-                                        <Button.Text color='$textPrimary'>Cancel</Button.Text>
+                                        <Button.Text color='$textPrimary'>{t('common.cancel')}</Button.Text>
                                     </Button>
                                     <Button
                                         onPress={updateComment}
@@ -108,7 +109,7 @@ const Comment = ({ comment: _comment, reloadComments, isCommentInvalid }) => {
                                         opacity={isLoading ? 0.75 : 1}
                                     >
                                         <Button.Icon>{isLoading ? <Spinner color='$successText' /> : <FontAwesomeIcon icon={faSave} color={theme['$successText'].val} />}</Button.Icon>
-                                        <Button.Text color='$successText'>Save</Button.Text>
+                                        <Button.Text color='$successText'>{t('common.save')}</Button.Text>
                                     </Button>
                                 </XStack>
                             </>
@@ -124,7 +125,7 @@ const Comment = ({ comment: _comment, reloadComments, isCommentInvalid }) => {
                             <Button.Icon>
                                 <FontAwesomeIcon icon={faReply} color={theme['$infoText'].val} />
                             </Button.Icon>
-                            <Button.Text>Reply</Button.Text>
+                            <Button.Text>{t('Comment.reply')}</Button.Text>
                         </Button>
 
                         {comment.editable && (
@@ -132,13 +133,13 @@ const Comment = ({ comment: _comment, reloadComments, isCommentInvalid }) => {
                                 <Button.Icon>
                                     <FontAwesomeIcon icon={faPenToSquare} color={theme['$infoText'].val} />
                                 </Button.Icon>
-                                <Button.Text>Edit</Button.Text>
+                                <Button.Text>{t('common.edit')}</Button.Text>
                             </Button>
                         )}
                         {comment.editable && (
                             <Button onPress={handleDelete} size='$3' variant='link' px='$1' disabled={isDeleting} opacity={isDeleting ? 0.75 : 1}>
                                 <Button.Icon>{isDeleting ? <Spinner color='$errorBorder' /> : <FontAwesomeIcon icon={faTrash} color={theme['$errorBorder'].val} />}</Button.Icon>
-                                <Button.Text color='$errorBorder'>Delete</Button.Text>
+                                <Button.Text color='$errorBorder'>{t('common.delete')}</Button.Text>
                             </Button>
                         )}
                     </XStack>
@@ -148,7 +149,7 @@ const Comment = ({ comment: _comment, reloadComments, isCommentInvalid }) => {
                             <TextArea
                                 value={replyInput}
                                 onChangeText={setReplyInput}
-                                placeholder='Write a reply...'
+                                placeholder={t('Comment.writeReply')}
                                 width='100%'
                                 borderWidth={1}
                                 borderColor='$borderColor'
@@ -156,7 +157,7 @@ const Comment = ({ comment: _comment, reloadComments, isCommentInvalid }) => {
                             />
                             <XStack justifyContent='flex-end' marginTop='$2' space='$2' alignItems='center'>
                                 <Button onPress={() => setReplying(false)} size='$3' disabled={isLoading} opacity={isLoading ? 0.75 : 1}>
-                                    <Button.Text color='$textPrimary'>Cancel</Button.Text>
+                                    <Button.Text color='$textPrimary'>{t('common.cancel')}</Button.Text>
                                 </Button>
                                 <Button
                                     onPress={publishReply}
@@ -168,7 +169,7 @@ const Comment = ({ comment: _comment, reloadComments, isCommentInvalid }) => {
                                     opacity={isLoading ? 0.75 : 1}
                                 >
                                     <Button.Icon>{isLoading ? <Spinner color='$infoText' /> : <FontAwesomeIcon icon={faReply} color={theme['$infoText'].val} />}</Button.Icon>
-                                    <Button.Text color='$infoText'>Publish Reply</Button.Text>
+                                    <Button.Text color='$infoText'>{t('Comment.publishReply')}</Button.Text>
                                 </Button>
                             </XStack>
                         </YStack>

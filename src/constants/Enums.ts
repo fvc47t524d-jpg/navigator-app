@@ -1,3 +1,6 @@
+import { translate } from '../utils/localize';
+import { getIssueCategories } from './IssueCategory';
+
 export * from './IssueCategory';
 
 export const IssueType = Object.freeze({
@@ -56,26 +59,50 @@ export const DriverFuelReportStatus = Object.freeze({
     CANCELED: 'Canceled',
 });
 
-function convertEnumToArray(enumObj) {
-    return Object.entries(enumObj).map(([key, value]) => ({ key, value }));
+// Option labels are translated at call time (enums.<group>.<KEY>); the stored value stays the key.
+function convertEnumToArray(enumObj, group) {
+    return Object.entries(enumObj).map(([key, value]) => ({ key, value: translate(`enums.${group}.${key}`, { defaultValue: value }) }));
+}
+
+/** Display label for a stored enum key (e.g. 'VEHICLE'), in the current language. */
+export function enumLabel(group, key, fallback) {
+    if (!key) return fallback;
+    const normalized = String(key).toUpperCase().replace(/[\s-]+/g, '_');
+    return translate(`enums.${group}.${normalized}`, { defaultValue: fallback ?? key });
+}
+
+/** Translation key for an issue category, which is stored as its English text. */
+function issueCategoryKey(category) {
+    return String(category).toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+}
+
+/** Display label for a stored issue category. */
+export function issueCategoryLabel(category, fallback) {
+    if (!category) return fallback;
+    return translate(`issueCategories.${issueCategoryKey(category)}`, { defaultValue: fallback ?? category });
+}
+
+/** Issue categories for a type as { value, label } options; the value stays the original English text. */
+export function getIssueCategoryOptions(type) {
+    return getIssueCategories(type).map((category) => ({ value: category, label: issueCategoryLabel(category) }));
 }
 
 export function getIssueTypes() {
-    return convertEnumToArray(IssueType);
+    return convertEnumToArray(IssueType, 'IssueType');
 }
 
 export function getIssuePriorities() {
-    return convertEnumToArray(IssuePriority);
+    return convertEnumToArray(IssuePriority, 'IssuePriority');
 }
 
 export function getIssueStatuses() {
-    return convertEnumToArray(IssueStatus);
+    return convertEnumToArray(IssueStatus, 'IssueStatus');
 }
 
 export function getFuelReportStatuses() {
-    return convertEnumToArray(FuelReportStatus);
+    return convertEnumToArray(FuelReportStatus, 'FuelReportStatus');
 }
 
 export function getDriverFuelReportStatuses() {
-    return convertEnumToArray(DriverFuelReportStatus);
+    return convertEnumToArray(DriverFuelReportStatus, 'FuelReportStatus');
 }

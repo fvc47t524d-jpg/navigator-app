@@ -10,6 +10,7 @@ import { useChat } from '../contexts/ChatContext';
 import { useAuth } from '../contexts/AuthContext';
 import useSocketClusterClient from '../hooks/use-socket-cluster-client';
 import ChatParticipantAvatar from '../components/ChatParticipantAvatar';
+import { translate as t } from '../utils/localize';
 
 const ChatHomeScreen = () => {
     const theme = useTheme();
@@ -152,7 +153,7 @@ const ChatHomeScreen = () => {
             <XStack bg='$background' alignItems='center' justifyContent='space-between' px='$3' py='$4' borderBottomWidth={1} borderColor='$borderColor'>
                 <YStack>
                     <Text color='$textPrimary' fontSize={26} fontWeight='bold'>
-                        Chats
+                        {t('ChatHomeScreen.title')}
                     </Text>
                 </YStack>
                 <YStack>

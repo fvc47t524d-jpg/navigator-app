@@ -9,6 +9,8 @@ import { formatDuration, formatMeters } from '../utils/format';
 import { useOrderManager } from '../contexts/OrderManagerContext';
 import { useNotification } from '../contexts/NotificationContext';
 import { useAuth } from '../contexts/AuthContext';
+import { useLanguage } from '../contexts/LanguageContext';
+import { getDateFnsLocale, getCalendarStripLocale } from '../utils/localize';
 import InsetShadow from 'react-native-inset-shadow';
 import useSocketClusterClient from '../hooks/use-socket-cluster-client';
 import useAppTheme from '../hooks/use-app-theme';
@@ -63,10 +65,12 @@ const DriverOrderManagementScreen = () => {
         setDimissedOrders,
     } = useOrderManager();
     const { listen } = useSocketClusterClient();
+    const { t, locale } = useLanguage();
+    const dateLocale = getDateFnsLocale(locale);
     const { addNotificationListener, removeNotificationListener } = useNotification();
     const startingDate = subDays(new Date(currentDate), 2);
     const datesWhitelist = [new Date(), { start: startOfYear(new Date()), end: endOfYear(new Date()) }];
-    const todayString = format(new Date(currentDate), 'EEEE');
+    const todayString = format(new Date(currentDate), 'EEEE', { locale: dateLocale });
     const activeCurrentOrders = currentOrders.filter((order) => !['completed', 'created', 'canceled'].includes(order.getAttribute('status')));
     const stops = countStops(activeCurrentOrders);
     const distance = sumDistance(activeCurrentOrders);
@@ -183,7 +187,7 @@ const DriverOrderManagementScreen = () => {
             <YStack>
                 <YStack px='$1'>
                     <Text color='$textPrimary' fontSize={18} fontWeight='bold'>
-                        Active Orders: {allActiveOrders.length}
+                        {t('DriverOrderManagementScreen.activeOrdersCount', { count: allActiveOrders.length })}
                     </Text>
                 </YStack>
                 <YStack>
@@ -211,7 +215,7 @@ const DriverOrderManagementScreen = () => {
                     <XStack alignItems='center' bg='$info' borderWidth={1} borderColor='$infoBorder' space='$2' px='$3' py='$2' borderRadius='$5' width='100%' flexWrap='wrap'>
                         <FontAwesomeIcon icon={faInfoCircle} color={theme['$infoText'].val} />
                         <Text color='$infoText' fontSize={16}>
-                            No current orders for {format(new Date(currentDate), 'yyyy-MM-dd')}
+                            {t('DriverOrderManagementScreen.noOrdersFor', { date: format(new Date(currentDate), 'yyyy-MM-dd') })}
                         </Text>
                     </XStack>
                 </YStack>
@@ -254,6 +258,7 @@ const DriverOrderManagementScreen = () => {
                     markedDates={activeOrderMarkedDates}
                     startingDate={startingDate}
                     selectedDate={new Date(currentDate)}
+                    locale={getCalendarStripLocale(locale)}
                     onDateSelected={(selectedDate) => setCurrentDate(format(new Date(selectedDate), 'yyyy-MM-dd HH:mm:ssXXX'))}
                     iconLeft={require('../../assets/nv-arrow-left.png')}
                     iconRight={require('../../assets/nv-arrow-right.png')}
@@ -261,17 +266,17 @@ const DriverOrderManagementScreen = () => {
             </YStack>
             <YStack bg='$surface' px='$3' py='$4' borderBottomWidth={1} borderTopWidth={0} borderColor={isDarkMode ? '$borderColor' : '$borderColorWithShadow'}>
                 <Text color='$textPrimary' fontSize='$8' fontWeight='bold' mb='$1'>
-                    {todayString} orders
+                    {t('DriverOrderManagementScreen.dayOrders', { day: todayString })}
                 </Text>
                 <XStack space='$2' alignItems='center'>
                     <Text color='$textSecondary' fontSize='$5'>
-                        {currentOrders.length} {currentOrders.length > 1 ? 'orders' : 'order'}
+                        {t('DriverOrderManagementScreen.orderCount', { count: currentOrders.length })}
                     </Text>
                     <Text color='$textSecondary' fontSize='$5'>
                         •
                     </Text>
                     <Text color='$textSecondary' fontSize='$5'>
-                        {stops} {stops > 1 ? 'stops' : 'stop'} left
+                        {t('DriverOrderManagementScreen.stopsLeft', { count: stops })}
                     </Text>
                     <Text color='$textSecondary' fontSize='$5'>
                         •

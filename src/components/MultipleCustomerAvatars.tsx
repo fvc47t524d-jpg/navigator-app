@@ -1,5 +1,6 @@
 import React from 'react';
 import { Avatar, XStack, Text, useTheme } from 'tamagui';
+import { translate as t } from '../utils/localize';
 
 interface MultipleCustomerAvatarsProps {
     customers: Customer[];
@@ -11,7 +12,7 @@ export const MultipleCustomerAvatars: React.FC<MultipleCustomerAvatarsProps> = (
     if (customers.length === 0) {
         return (
             <XStack alignItems='center'>
-                <Text color='$textPrimary'>No customers</Text>
+                <Text color='$textPrimary'>{t('MultipleCustomerAvatars.none')}</Text>
             </XStack>
         );
     }

@@ -16,6 +16,7 @@ import LoadingOverlay from '../components/LoadingOverlay';
 import HeaderButton from '../components/HeaderButton';
 import PlaceMapView from '../components/PlaceMapView';
 import useFleetbase from '../hooks/use-fleetbase';
+import { translate as t } from '../utils/localize';
 
 const FuelReportScreen = () => {
     const theme = useTheme();
@@ -42,9 +43,9 @@ const FuelReportScreen = () => {
             }
         };
 
-        Alert.alert('Confirm Deletion', 'Are you sure you want to delete this Fuel Report?', [
-            { text: 'Cancel', style: 'cancel' },
-            { text: 'Delete Fuel Report', onPress: handleDelete },
+        Alert.alert(t('common.confirmDeletion'), t('FuelReportScreen.deleteMessage'), [
+            { text: t('common.cancel'), style: 'cancel' },
+            { text: t('FuelReportScreen.delete'), onPress: handleDelete },
         ]);
     }, [adapter]);
 
@@ -64,12 +65,12 @@ const FuelReportScreen = () => {
                     <HeaderButton icon={faTimes} onPress={() => navigation.goBack()} />
                 </XStack>
             </Portal>
-            <LoadingOverlay visible={isLoading} text='Deleting Fuel Report...' />
+            <LoadingOverlay visible={isLoading} text={t('FuelReportScreen.deleting')} />
             <YStack py='$3' space='$3'>
                 <XStack px='$3' alignItems='center' space='$3'>
                     <YStack alignItems='flex-start'>
                         <Text color='$textSecondary' fontSize={17} fontWeight='bold'>
-                            Odometer:
+                            {t('Reports.odometer')}
                         </Text>
                     </YStack>
                     <YStack flex={1} alignItems='flex-end'>
@@ -82,7 +83,7 @@ const FuelReportScreen = () => {
                 <XStack px='$3' alignItems='center' space='$3'>
                     <YStack alignItems='flex-start'>
                         <Text color='$textSecondary' fontSize={17} fontWeight='bold'>
-                            Volume:
+                            {t('Reports.volume')}
                         </Text>
                     </YStack>
                     <YStack flex={1} alignItems='flex-end'>
@@ -95,12 +96,12 @@ const FuelReportScreen = () => {
                 <XStack px='$3' alignItems='center' space='$3'>
                     <YStack alignItems='flex-start'>
                         <Text color='$textSecondary' fontSize={17} fontWeight='bold'>
-                            Vehicle:
+                            {t('Reports.vehicle')}
                         </Text>
                     </YStack>
                     <YStack flex={1} alignItems='flex-end'>
                         <Text color='$textPrimary' fontSize={17} numberOfLines={1}>
-                            {fuelReport.vehicle_name ?? 'N/A'}
+                            {fuelReport.vehicle_name ?? t('common.notApplicable')}
                         </Text>
                     </YStack>
                 </XStack>
@@ -108,7 +109,7 @@ const FuelReportScreen = () => {
                 <XStack px='$3' alignItems='center' space='$3'>
                     <YStack alignItems='flex-start'>
                         <Text color='$textSecondary' fontSize={17} fontWeight='bold'>
-                            Cost:
+                            {t('Reports.cost')}
                         </Text>
                     </YStack>
                     <YStack flex={1} alignItems='flex-end'>
@@ -121,7 +122,7 @@ const FuelReportScreen = () => {
                 <XStack px='$3' alignItems='center' space='$3'>
                     <YStack alignItems='flex-start'>
                         <Text color='$textSecondary' fontSize={17} fontWeight='bold'>
-                            Status:
+                            {t('Reports.status')}
                         </Text>
                     </YStack>
                     <YStack flex={1} alignItems='flex-end'>
@@ -132,7 +133,7 @@ const FuelReportScreen = () => {
                 <YStack px='$3' space='$3'>
                     <YStack alignItems='flex-start'>
                         <Text color='$textSecondary' fontSize={17} fontWeight='bold'>
-                            Report Location:
+                            {t('Reports.location')}
                         </Text>
                     </YStack>
                     <YStack flex={1} alignItems='flex-start'>

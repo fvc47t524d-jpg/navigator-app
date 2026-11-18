@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faCamera, faPlus, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import useAppTheme from '../hooks/use-app-theme';
 import CameraCapture from './CameraCapture';
+import { translate as t } from '../utils/localize';
 
 const INPUT_MIN_HEIGHT = 40;
 const INPUT_MAX_HEIGHT = 120;
@@ -69,7 +70,7 @@ const ChatKeyboard = ({ onSend, onAttach, onCamera, onFocus, onBlur }) => {
                             maxHeight={INPUT_MAX_HEIGHT}
                             textAlignVertical='top'
                             lineHeight={20}
-                            placeholder='Type a message'
+                            placeholder={t('ChatKeyboard.typeMessage')}
                             multiline
                             backgroundColor='$surface'
                             borderColor='$borderColor'

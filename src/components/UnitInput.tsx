@@ -8,6 +8,7 @@ import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { Portal } from '@gorhom/portal';
 import { debounce } from '../utils';
 import unit from '../constants/Units';
+import { translate as t } from '../utils/localize';
 
 const getDefaultUnit = (type, defaultValue) => {
     if (typeof type === 'string' && type.startsWith('volume')) {
@@ -30,7 +31,7 @@ const UnitInput = ({
     type = 'volume',
     snapTo = '100%',
     backgroundColor = '$surface',
-    placeholder = 'Input volume',
+    placeholder = t('UnitInput.placeholder'),
     wrapperProps = {},
     portalHost = 'MainPortal',
     onBottomSheetPositionChanged,
@@ -197,7 +198,7 @@ const UnitInput = ({
                     <YStack px='$2'>
                         <BottomSheetTextInput
                             ref={searchInputRef}
-                            placeholder='Search unit'
+                            placeholder={t('UnitInput.search')}
                             onChangeText={setSearchTerm}
                             autoCapitalize='none'
                             autoComplete='off'

@@ -8,6 +8,7 @@ import { isEmpty } from '../utils';
 import { useAuth } from './AuthContext';
 import useStorage from '../hooks/use-storage';
 import useFleetbase from '../hooks/use-fleetbase';
+import { translate as t } from '../utils/localize';
 
 const LocationContext = createContext({
     location: null,
@@ -88,8 +89,8 @@ export const LocationProvider = ({ children }) => {
             return new Place(
                 {
                     id: 'driver',
-                    name: 'Driver Location',
-                    street1: 'Driver Location',
+                    name: t('LocationContext.driverLocation'),
+                    street1: t('LocationContext.driverLocation'),
                     location: new Point(coords.latitude, coords.longitude),
                     ...attributes,
                 },
@@ -171,11 +172,11 @@ export const LocationProvider = ({ children }) => {
         BackgroundGeolocation.ready(
             {
                 backgroundPermissionRationale: {
-                    title: 'Allow Fleetbase Navigator to access your location',
+                    title: t('LocationContext.rationaleTitle'),
                     message:
-                        'Fleetbase Navigator collects precise location data to enable real-time driver tracking and order progress updates for your organization’s dispatchers and operations team, even when the app is closed or not in use. Location is collected while you are online and is sent securely to Fleetbase.',
-                    positiveAction: 'Allow',
-                    negativeAction: 'Deny',
+                        t('LocationPermissionScreen.enableLocationPrompt'),
+                    positiveAction: t('LocationContext.allow'),
+                    negativeAction: t('LocationContext.deny'),
                 },
                 desiredAccuracy: BackgroundGeolocation.DESIRED_ACCURACY_HIGH,
                 distanceFilter: 10,

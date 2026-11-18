@@ -58,6 +58,7 @@
         "inflected": "^2.1.0",
         "language-name-map": "^0.3.0",
         "locale-emoji": "^0.3.0",
+        "moment": "^2.30.1",
         "react": "19.2.7",
         "react-dom": "19.2.7",
         "react-native": "0.86.0",

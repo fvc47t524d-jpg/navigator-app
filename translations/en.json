@@ -2,6 +2,7 @@
     "common": {
         "fleetbase": "Fleetbase",
         "navigator": "Navigator",
+        "storefront": "Storefront",
         "apiKey": "API Key",
         "cancel": "Cancel",
         "new": "New",
@@ -17,7 +18,16 @@
         "confirmation": "Confirmation",
         "ok": "OK",
         "done": "Done",
-        "tryAgain": "Try Again"
+        "tryAgain": "Try Again",
+        "yes": "Yes",
+        "no": "No",
+        "continue": "Continue",
+        "close": "Close",
+        "error": "Error",
+        "notApplicable": "N/A",
+        "reset": "Reset",
+        "optional": "Optional",
+        "confirmDeletion": "Confirm Deletion"
     },
     "orderStatuses": {
         "created": "Created",
@@ -26,10 +36,163 @@
         "driver_enroute": "Driver en-route",
         "pending": "Pending",
         "in_progress": "In progress",
-        "completed": "Completed"
+        "completed": "Completed",
+        "started": "Started",
+        "enroute": "En route",
+        "canceled": "Canceled",
+        "order_canceled": "Canceled",
+        "low": "Low",
+        "medium": "Medium",
+        "high": "High",
+        "critical": "Critical",
+        "scheduled_maintenance": "Scheduled Maintenance",
+        "operational_suggestion": "Operational Suggestion",
+        "backlogged": "Backlogged",
+        "requires_update": "Requires Update",
+        "in_review": "In Review",
+        "re_opened": "Re Opened",
+        "duplicate": "Duplicate",
+        "pending_review": "Pending Review",
+        "escalated": "Escalated",
+        "draft": "Draft",
+        "pending_approval": "Pending Approval",
+        "approved": "Approved",
+        "rejected": "Rejected",
+        "revised": "Revised",
+        "submitted": "Submitted",
+        "confirmed": "Confirmed",
+        "archived": "Archived"
     },
     "BootScreen": {
         "missingRequiredConfigurationKeys": "Missing required configuration keys"
+    },
+    "Buttons": {
+        "continueWithPhone": "Continue with Phone"
+    },
+    "PhoneLoginScreen": {
+        "loginViaSms": "Login via SMS",
+        "sendVerificationCode": "Send Verification Code",
+        "home": "Home",
+        "invalidPhoneNumber": "Invalid phone number provided."
+    },
+    "PhoneLoginVerifyScreen": {
+        "codeSentTo": "Code sent to {{phone}}",
+        "verifyCode": "Verify Code",
+        "unableToSendSms": "Unable to send SMS.",
+        "codeSentVia": "Your verification code was sent via"
+    },
+    "DriverNavigator": {
+        "dashboardTab": "Dash",
+        "ordersTab": "Orders",
+        "reportsTab": "Reports",
+        "chatTab": "Chat",
+        "accountTab": "Account",
+        "createFuelReport": "Create a new Fuel Report",
+        "createIssue": "Create a new Issue"
+    },
+    "DriverDashboardScreen": {
+        "tracking": "Tracking:",
+        "location": "Location:",
+        "latitude": "Latitude:",
+        "longitude": "Longitude:",
+        "heading": "Heading:",
+        "altitude": "Altitude:",
+        "activeOrders": "Active Orders",
+        "speed": "Speed"
+    },
+    "DriverOrderManagementScreen": {
+        "dayOrders": "{{day}} orders",
+        "orderCount": {
+            "one": "{{count}} order",
+            "other": "{{count}} orders"
+        },
+        "stopsLeft": {
+            "one": "{{count}} stop left",
+            "other": "{{count}} stops left"
+        },
+        "activeOrdersCount": "Active Orders: {{count}}",
+        "noOrdersFor": "No current orders for {{date}}"
+    },
+    "OrderCard": {
+        "dateScheduled": "Date Scheduled:",
+        "podRequired": "POD Required:",
+        "dispatchedAt": "Dispatched At:",
+        "eta": "ETA:",
+        "ect": "ECT:",
+        "customer": "Customer:",
+        "customers": "Customers:"
+    },
+    "AdhocOrderCard": {
+        "pickupDestination": "Pickup Destination",
+        "accepting": "Accepting and assigning order..."
+    },
+    "OrderActivitySelect": {
+        "requiresProof": "Requires proof of delivery",
+        "selectActivity": "Select activity",
+        "updatingActivityFor": "Updating activity for:"
+    },
+    "OrderScreen": {
+        "waypointCompleted": "Waypoint Completed",
+        "waypointCompletedMessage": "Waypoint activity completed for destination {{previous}}. Your current destination is now {{current}}. You can change the destination at anytime by pressing the \"Current Destination\" button.",
+        "orderNotDispatchedTitle": "Order Not Dispatched Yet",
+        "orderNotDispatchedMessage": "This order is not yet dispatched, are you sure you want to continue?",
+        "warning": "Warning!",
+        "statusUpdated": "Order status updated to: {{status}}",
+        "acceptAdhocTitle": "Accept Ad-Hoc order?",
+        "acceptAdhocMessage": "By accepting this ad-hoc order it will become assigned to you and the order will start immediately.",
+        "accept": "Accept",
+        "dismissAdhocTitle": "Dismiss Ad-Hoc order?",
+        "dismissAdhocMessage": "By dismissing this ad-hoc order it will no longer display as an available order.",
+        "acceptOrder": "Accept Order",
+        "dismissOrder": "Dismiss Order",
+        "startOrder": "Start Order",
+        "updateActivity": "Update Activity",
+        "startNavigation": "Start Navigation",
+        "orderInformation": "Order Information",
+        "id": "ID",
+        "internalId": "Internal ID",
+        "trackingNumber": "Tracking Number",
+        "proofOfDelivery": "Proof of Delivery",
+        "type": "Type",
+        "dateCreated": "Date Created",
+        "dateScheduled": "Date Scheduled",
+        "dateDispatched": "Date Dispatched",
+        "orderRoute": "Order Route",
+        "orderProgress": "Order Progress",
+        "currentDestination": "Current Destination",
+        "nextDestination": "Next Destination",
+        "totalDistance": "Total Distance",
+        "startTime": "Start Time",
+        "currentEta": "Current ETA",
+        "ect": "ECT",
+        "orderNotes": "Order Notes",
+        "orderProof": "Order Proof",
+        "orderPayload": "Order Payload",
+        "customer": "Customer",
+        "orderDocuments": "Order Documents & Files",
+        "orderComments": "Order Comments"
+    },
+    "CameraCapture": {
+        "photoCaptured": "Photo captured.",
+        "photosAdded": {
+            "one": "{{count}} photo added from gallery.",
+            "other": "{{count}} photos added from gallery."
+        },
+        "unableToSelect": "Unable to select photos.",
+        "unableToSelectWithCode": "Unable to select photos ({{code}}).",
+        "loadingCamera": "Loading camera or awaiting permission...",
+        "gallery": "Gallery",
+        "snap": "Snap"
+    },
+    "OrderDocumentFiles": {
+        "downloadComplete": "Download Complete",
+        "imageSaved": "Image saved to your Photos Gallery.",
+        "downloadFailed": "Download Failed",
+        "statusCode": "Status Code: {{code}}",
+        "downloadError": "There was an error downloading the file.",
+        "noDocuments": "No Documents or Files.",
+        "view": "View",
+        "download": "Download"
     },
     "AccountScreen": {
         "changeProfilePhotoOptions": {
@@ -73,7 +236,14 @@
         "unconfiguredApp": "Looks like you haven't properly configured your app.",
         "envMissing": "is missing from environment!"
     },
-    "DriverReportScreen": {},
+    "DriverReportScreen": {
+        "issues": "Issues",
+        "fuelReports": "Fuel Reports",
+        "issueOn": "Issue on:",
+        "fuelReported": "Fuel Reported:",
+        "noIssues": "No issues",
+        "noFuelReports": "No fuel reports"
+    },
     "LocationPermissionScreen": {
         "enableLocationServices": "Location Data Disclosure",
         "enableLocationPrompt": "Fleetbase Navigator collects precise location data to enable real-time driver tracking and order progress updates for your organization’s dispatchers and operations team, even when the app is closed or not in use. Location is collected while you are online and is sent securely to Fleetbase.",
@@ -84,5 +254,314 @@
         "permissionDeniedPrompt": "Location access is required before you can sign in. Would you like to allow access now?",
         "locationBlockedPrompt": "Location access has been blocked. Please open Settings and enable it to continue.",
         "goToSettings": "Go to Settings"
+    },
+    "ChatKeyboard": {
+        "typeMessage": "Type a message"
+    },
+    "ChatParticipants": {
+        "none": "No participants"
+    },
+    "Comment": {
+        "deleteTitle": "Delete Comment",
+        "deleteMessage": "Are you sure you want to delete this comment?",
+        "reply": "Reply",
+        "writeReply": "Write a reply...",
+        "publishReply": "Publish Reply"
+    },
+    "CommentThread": {
+        "invalidTitle": "Invalid Comment",
+        "invalidMessage": "Comment must be at least 2 characters.",
+        "writeComment": "Write a comment...",
+        "publish": "Publish Comment"
+    },
+    "CurrentDestinationSelect": {
+        "select": "Select destination"
+    },
+    "FuelReportForm": {
+        "status": "Status",
+        "selectStatus": "Select Fuel Report Status",
+        "odometer": "Odometer",
+        "odometerPlaceholder": "Input your current odometer...",
+        "volume": "Volume",
+        "volumePlaceholder": "Input fuel volume...",
+        "cost": "Cost",
+        "costPlaceholder": "Input fuel costs...",
+        "publish": "Publish Fuel Report"
+    },
+    "InstanceLinkHandler": {
+        "success": "Instance link was successful!"
+    },
+    "IssueForm": {
+        "type": "Issue Type",
+        "selectType": "Select Issue Type",
+        "category": "Issue Category",
+        "selectCategory": "Select Issue Category",
+        "priority": "Issue Priority",
+        "selectPriority": "Select Issue Priority",
+        "status": "Issue Status",
+        "selectStatus": "Select Issue Status",
+        "report": "Issue Report",
+        "reportPlaceholder": "Type your issue report...",
+        "publish": "Publish Issue"
+    },
+    "LocationPicker": {
+        "addNew": "Add New Location"
+    },
+    "MoneyInput": {
+        "search": "Search currencies",
+        "placeholder": "Input amount"
+    },
+    "MultipleCustomerAvatars": {
+        "none": "No customers"
+    },
+    "OrderCustomerCard": {
+        "call": "Call",
+        "email": "Email",
+        "chat": "Chat"
+    },
+    "OrderPayloadEntities": {
+        "empty": "Empty Payload."
+    },
+    "OrderProofOfDelivery": {
+        "none": "No Proof of Delivery Captured."
+    },
+    "PhoneInput": {
+        "placeholder": "Enter phone number",
+        "searchCountry": "Search country"
+    },
+    "QrCodeScanner": {
+        "noCamera": "No camera available"
+    },
+    "UnitInput": {
+        "search": "Search unit",
+        "placeholder": "Input volume"
+    },
+    "CoreStack": {
+        "connectionConfig": "Connection Config"
+    },
+    "OrderStack": {
+        "orderHistory": "Order History"
+    },
+    "ChatHomeScreen": {
+        "title": "Chats"
+    },
+    "ChatParticipantsScreen": {
+        "removeMessage": "Are you sure you wish to remove this participant from the chat?",
+        "removeParticipant": "Remove Participant",
+        "remove": "Remove",
+        "participants": "Participants",
+        "addParticipant": "Add Participant",
+        "selectParticipant": "Select Participant"
+    },
+    "CreateAccountScreen": {
+        "title": "Create Account",
+        "namePlaceholder": "Enter your name",
+        "haveAccount": "Have an account already? Login"
+    },
+    "CreateChatChannelScreen": {
+        "nameRequired": "Chat channel name is required.",
+        "unselect": "Unselect",
+        "select": "Select",
+        "title": "Create new Chat",
+        "channelName": "Channel Name",
+        "namePlaceholder": "Input chat channel name...",
+        "selectParticipants": "Select Participants:",
+        "created": "New chat channel created: {{name}}"
+    },
+    "DriverProfileScreen": {
+        "organization": "Organization"
+    },
+    "Reports": {
+        "status": "Status:",
+        "priority": "Priority:",
+        "report": "Report:",
+        "type": "Type:",
+        "category": "Category:",
+        "vehicle": "Vehicle:",
+        "reporter": "Reporter:",
+        "odometer": "Odometer:",
+        "volume": "Volume:",
+        "cost": "Cost:",
+        "location": "Report Location:"
+    },
+    "EditLocationCoordScreen": {
+        "save": "Save Position"
+    },
+    "EditLocationScreen": {
+        "saved": "Address saved.",
+        "typeError": "Unable to select location type.",
+        "apartment": "Apartment",
+        "house": "House",
+        "office": "Office",
+        "hotel": "Hotel",
+        "hospital": "Hospital",
+        "school": "School",
+        "other": "Other",
+        "address": "Address",
+        "locationType": "Location Type",
+        "details": "Address Details",
+        "detailsHint": "Add additional address details.",
+        "name": "Address label or name",
+        "street1": "Street address or P.O. Box",
+        "street2": "Apt, suite, unit, building, floor, etc.",
+        "neighborhood": "Neighborhood",
+        "city": "City or town",
+        "postalCode": "Postal or zip code",
+        "instructions": "Additional instructions for the courier",
+        "meetingPoint": "Where exactly should we meet you?",
+        "makeDefault": "Make Default Address",
+        "delete": "Delete Address",
+        "save": "Save Address"
+    },
+    "EntityScreen": {
+        "details": "Details",
+        "sku": "SKU",
+        "dimensions": "Dimensions (L x W x H)",
+        "weight": "Weight"
+    },
+    "FuelReportScreen": {
+        "deleteMessage": "Are you sure you want to delete this Fuel Report?",
+        "delete": "Delete Fuel Report",
+        "deleting": "Deleting Fuel Report..."
+    },
+    "InstanceLinkScreen": {
+        "saved": "Instance connection config saved successfully.",
+        "reset": "Instance connection config reset successfully.",
+        "hostPlaceholder": "Input host of Fleetbase instance...",
+        "keyPlaceholder": "Input API Key for Fleetbase instance...",
+        "socketHostPlaceholder": "Input SocketCluster host for Fleetbase instance...",
+        "socketPortPlaceholder": "Input SocketCluster port for Fleetbase instance...",
+        "saveChanges": "Save Changes"
+    },
+    "IssueScreen": {
+        "deleteMessage": "Are you sure you want to delete this Issue?",
+        "delete": "Delete Issue",
+        "deleting": "Deleting Issue..."
+    },
+    "LoginScreen": {
+        "loggedInWith": "Logged in with {{provider}}"
+    },
+    "enums": {
+        "IssueType": {
+            "VEHICLE": "Vehicle",
+            "DRIVER": "Driver",
+            "ROUTE": "Route",
+            "PAYLOAD_CARGO": "Payload Cargo",
+            "SOFTWARE_TECHNICAL": "Software Technical",
+            "OPERATIONAL": "Operational",
+            "CUSTOMER": "Customer",
+            "SECURITY": "Security",
+            "ENVIRONMENTAL_SUSTAINABILITY": "Environmental Sustainability"
+        },
+        "IssuePriority": {
+            "LOW": "Low",
+            "MEDIUM": "Medium",
+            "HIGH": "High",
+            "CRITICAL": "Critical",
+            "SCHEDULED_MAINTENANCE": "Scheduled Maintenance",
+            "OPERATIONAL_SUGGESTION": "Operational Suggestion"
+        },
+        "IssueStatus": {
+            "PENDING": "Pending",
+            "IN_PROGRESS": "In Progress",
+            "BACKLOGGED": "Backlogged",
+            "REQUIRES_UPDATE": "Requires Update",
+            "IN_REVIEW": "In Review",
+            "RE_OPENED": "Re Opened",
+            "DUPLICATE": "Duplicate",
+            "PENDING_REVIEW": "Pending Review",
+            "ESCALATED": "Escalated",
+            "COMPLETED": "Completed",
+            "CANCELED": "Canceled"
+        },
+        "FuelReportStatus": {
+            "DRAFT": "Draft",
+            "PENDING_APPROVAL": "Pending Approval",
+            "APPROVED": "Approved",
+            "REJECTED": "Rejected",
+            "REVISED": "Revised",
+            "SUBMITTED": "Submitted",
+            "IN_REVIEW": "In Review",
+            "CONFIRMED": "Confirmed",
+            "ARCHIVED": "Archived",
+            "CANCELED": "Canceled"
+        }
+    },
+    "issueCategories": {
+        "mechanical_problems": "Mechanical Problems",
+        "cosmetic_damages": "Cosmetic Damages",
+        "tire_issues": "Tire Issues",
+        "electronics_and_instruments": "Electronics and Instruments",
+        "maintenance_alerts": "Maintenance Alerts",
+        "fuel_efficiency_issues": "Fuel Efficiency Issues",
+        "behavior_concerns": "Behavior Concerns",
+        "documentation": "Documentation",
+        "time_management": "Time Management",
+        "communication": "Communication",
+        "training_needs": "Training Needs",
+        "health_and_safety_violations": "Health and Safety Violations",
+        "inefficient_routes": "Inefficient Routes",
+        "safety_concerns": "Safety Concerns",
+        "blocked_routes": "Blocked Routes",
+        "environmental_considerations": "Environmental Considerations",
+        "unfavorable_weather_conditions": "Unfavorable Weather Conditions",
+        "damaged_goods": "Damaged Goods",
+        "misplaced_goods": "Misplaced Goods",
+        "documentation_issues": "Documentation Issues",
+        "temperature_sensitive_goods": "Temperature-Sensitive Goods",
+        "incorrect_cargo_loading": "Incorrect Cargo Loading",
+        "bugs": "Bugs",
+        "ui_ux_concerns": "UI/UX Concerns",
+        "integration_failures": "Integration Failures",
+        "performance": "Performance",
+        "feature_requests": "Feature Requests",
+        "security_vulnerabilities": "Security Vulnerabilities",
+        "compliance": "Compliance",
+        "resource_allocation": "Resource Allocation",
+        "cost_overruns": "Cost Overruns",
+        "vendor_management_issues": "Vendor Management Issues",
+        "service_quality": "Service Quality",
+        "billing_discrepancies": "Billing Discrepancies",
+        "communication_breakdown": "Communication Breakdown",
+        "feedback_and_suggestions": "Feedback and Suggestions",
+        "order_errors": "Order Errors",
+        "unauthorized_access": "Unauthorized Access",
+        "data_concerns": "Data Concerns",
+        "physical_security": "Physical Security",
+        "data_integrity_issues": "Data Integrity Issues",
+        "fuel_consumption": "Fuel Consumption",
+        "carbon_footprint": "Carbon Footprint",
+        "waste_management": "Waste Management",
+        "green_initiatives_opportunities": "Green Initiatives Opportunities"
+    },
+    "AlertPromptBox": {
+        "confirmMessage": "Are you sure you want to proceed?"
+    },
+    "BottomSheetSelect": {
+        "placeholder": "Select an option",
+        "search": "Search options"
+    },
+    "ExpandableSelect": {
+        "toggle": "Toggle options"
+    },
+    "OrderTotal": {
+        "deliveryFee": "Delivery Fee",
+        "deliveryTip": "Delivery Tip"
+    },
+    "OrderWaypointList": {
+        "expand": "Tap to expand",
+        "collapse": "Tap to collapse"
+    },
+    "LocationContext": {
+        "driverLocation": "Driver Location",
+        "rationaleTitle": "Allow Fleetbase Navigator to access your location",
+        "allow": "Allow",
+        "deny": "Deny"
+    },
+    "EditFuelReportScreen": {
+        "submit": "Update Fuel Report"
+    },
+    "EditIssueScreen": {
+        "submit": "Save Issue"
     }
 }

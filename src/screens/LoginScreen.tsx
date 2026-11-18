@@ -12,6 +12,7 @@ import { PhoneLoginButton, AppleLoginButton, GoogleLoginButton } from '../compon
 import useOAuth from '../hooks/use-oauth';
 import LinearGradient from 'react-native-linear-gradient';
 import DeviceInfo from 'react-native-device-info';
+import { translate as t } from '../utils/localize';
 
 const LoginScreen = () => {
     const navigation = useNavigation();
@@ -27,7 +28,7 @@ const LoginScreen = () => {
     const handleOAuthLogin = async (provider) => {
         try {
             const response = await login(provider);
-            toast.success(`Logged in with ${titleize(provider)}`);
+            toast.success(t('LoginScreen.loggedInWith', { provider: titleize(provider) }));
         } catch (err) {
             console.warn('Error attempting OAuth login:', err);
         }
