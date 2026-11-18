@@ -1,7 +1,7 @@
 import React, { createContext, useState, useContext, useEffect, useMemo, ReactNode } from 'react';
 import { getLangNameFromCode } from 'language-name-map';
 import { navigatorConfig } from '../utils';
-import { getAvailableLocales } from '../utils/localize';
+import { getAvailableLocales, getLocale, applyLocale } from '../utils/localize';
 import localeEmoji from 'locale-emoji';
 import useStorage from '../hooks/use-storage';
 import I18n from 'react-native-i18n';
@@ -10,6 +10,9 @@ I18n.fallbacks = true;
 I18n.translations = {
     ...getAvailableLocales(),
 };
+// Apply the saved (or default) language before any screen renders, so the first frame is
+// already in the right language and labels built outside React (e.g. tab bar) pick it up too.
+applyLocale(getLocale());
 
 interface LanguageContextProps {
     locale: string;
@@ -35,12 +38,12 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     }, [locale]);
 
     const setLocale = (newLocale: string) => {
-        I18n.locale = newLocale;
+        applyLocale(newLocale);
         setLocaleState(newLocale);
     };
 
     useEffect(() => {
-        I18n.locale = locale;
+        applyLocale(locale);
     }, []);
 
     const t = (key: string, options?: Record<string, any>) => I18n.t(key, options);

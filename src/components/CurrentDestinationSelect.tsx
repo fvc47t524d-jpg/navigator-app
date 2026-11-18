@@ -13,6 +13,7 @@ import Badge from './Badge';
 import Spacer from './Spacer';
 import useAppTheme from '../hooks/use-app-theme';
 import SafeSpinner from './SafeSpinner';
+import { translate as t } from '../utils/localize';
 
 const CurrentDestinationSelect = ({ onChange, destination, waypoints = [], snapTo = '100%', isLoading = false, ...props }) => {
     const { isDarkMode } = useAppTheme();
@@ -54,7 +55,7 @@ const CurrentDestinationSelect = ({ onChange, destination, waypoints = [], snapT
                             ) : (
                                 <YStack>
                                     <Text size={15} color={isDarkMode ? '$infoText' : '$gray-700'} fontWeight='bold' textTransform='uppercase' mb={2}>
-                                        {destination.getAttribute('name') ?? 'Current Destination'}
+                                        {destination.getAttribute('name') ?? t('OrderScreen.currentDestination')}
                                     </Text>
                                     <Text color={isDarkMode ? '$textSecondary' : '$gray-500'} textTransform='uppercase' mb='$1'>
                                         {formattedAddressFromPlace(destination)}
@@ -97,7 +98,7 @@ const CurrentDestinationSelect = ({ onChange, destination, waypoints = [], snapT
                         <YStack>
                             <XStack alignItems='center' justifyContent='space-between' px='$5' mb='$4'>
                                 <Text fontSize='$6' color='$textPrimary' fontWeight='bold'>
-                                    Select destination
+                                    {t('CurrentDestinationSelect.select')}
                                 </Text>
                             </XStack>
                             <BottomSheetFlatList

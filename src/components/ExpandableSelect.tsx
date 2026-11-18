@@ -4,6 +4,7 @@ import { Spinner, XStack, YStack, Text, Button, Separator, useTheme } from 'tama
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { isNone } from '../utils';
+import { translate as t } from '../utils/localize';
 
 const findSelectedOption = (options = [], value, optionValue) => {
     if (!isNone(value)) {
@@ -299,7 +300,7 @@ const ExpandableSelect = ({ value, optionValue, options = [], onSelect }) => {
                     shadowRadius={isDropdownOpen ? 3 : 0}
                     px='$4'
                     iconAfter={<FontAwesomeIcon icon={isDropdownOpen ? faChevronUp : faChevronDown} size={16} color={theme.textPrimary.val} />}
-                    accessibilityLabel='Toggle options'
+                    accessibilityLabel={t('ExpandableSelect.toggle')}
                     accessibilityRole='button'
                 >
                     <XStack space='$3'>

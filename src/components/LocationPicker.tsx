@@ -12,6 +12,7 @@ import useStorage from '../hooks/use-storage';
 import useCurrentLocation from '../hooks/use-current-location';
 import useSavedLocations from '../hooks/use-saved-locations';
 import useAppTheme from '../hooks/use-app-theme';
+import { translate as t } from '../utils/localize';
 
 const LocationPicker = ({
     onPressAddNewLocation,
@@ -196,7 +197,7 @@ const LocationPicker = ({
                                 >
                                     <XStack mb='$1' padding='$2'>
                                         <FontAwesomeIcon icon={faPlus} size={16} color={theme.textPrimary.val} style={{ marginRight: 6 }} />
-                                        <Text color='$textPrimary'>Add New Location</Text>
+                                        <Text color='$textPrimary'>{t('LocationPicker.addNew')}</Text>
                                     </XStack>
                                 </Pressable>
                             </YStack>

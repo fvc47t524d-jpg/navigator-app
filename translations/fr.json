@@ -1,0 +1,570 @@
+{
+    "common": {
+        "fleetbase": "Fleetbase",
+        "navigator": "Navigator",
+        "storefront": "Storefront",
+        "apiKey": "Clé API",
+        "cancel": "Annuler",
+        "new": "Nouveau",
+        "create": "Créer",
+        "save": "Enregistrer",
+        "delete": "Supprimer",
+        "edit": "Modifier",
+        "update": "Mettre à jour",
+        "service": "Service",
+        "retry": "Réessayer",
+        "loading": "Chargement...",
+        "confirm": "Confirmer",
+        "confirmation": "Confirmation",
+        "ok": "OK",
+        "done": "Terminé",
+        "tryAgain": "Réessayer",
+        "yes": "Oui",
+        "no": "Non",
+        "continue": "Continuer",
+        "close": "Fermer",
+        "error": "Erreur",
+        "notApplicable": "N/D",
+        "reset": "Réinitialiser",
+        "optional": "Facultatif",
+        "confirmDeletion": "Confirmer la suppression"
+    },
+    "orderStatuses": {
+        "created": "Créée",
+        "preparing": "En préparation",
+        "dispatched": "Attribuée",
+        "driver_enroute": "Livreur en route",
+        "pending": "En attente",
+        "in_progress": "En cours",
+        "completed": "Terminée",
+        "started": "Démarrée",
+        "enroute": "En route",
+        "canceled": "Annulée",
+        "order_canceled": "Annulée",
+        "low": "Basse",
+        "medium": "Moyenne",
+        "high": "Haute",
+        "critical": "Critique",
+        "scheduled_maintenance": "Entretien planifié",
+        "operational_suggestion": "Suggestion d'amélioration",
+        "backlogged": "Reporté",
+        "requires_update": "Mise à jour requise",
+        "in_review": "En revue",
+        "re_opened": "Rouvert",
+        "duplicate": "Doublon",
+        "pending_review": "En attente de revue",
+        "escalated": "Escaladé",
+        "draft": "Brouillon",
+        "pending_approval": "En attente d'approbation",
+        "approved": "Approuvé",
+        "rejected": "Refusé",
+        "revised": "Révisé",
+        "submitted": "Envoyé",
+        "confirmed": "Confirmé",
+        "archived": "Archivé"
+    },
+    "BootScreen": {
+        "missingRequiredConfigurationKeys": "Clés de configuration obligatoires manquantes"
+    },
+    "Buttons": {
+        "continueWithPhone": "Continuer avec mon téléphone"
+    },
+    "PhoneLoginScreen": {
+        "loginViaSms": "Connexion par SMS",
+        "sendVerificationCode": "Envoyer le code de vérification",
+        "home": "Accueil",
+        "invalidPhoneNumber": "Numéro de téléphone invalide."
+    },
+    "PhoneLoginVerifyScreen": {
+        "codeSentTo": "Code envoyé au {{phone}}",
+        "verifyCode": "Vérifier le code",
+        "unableToSendSms": "Impossible d'envoyer le SMS.",
+        "codeSentVia": "Votre code de vérification a été envoyé par"
+    },
+    "DriverNavigator": {
+        "dashboardTab": "Tableau",
+        "ordersTab": "Commandes",
+        "reportsTab": "Rapports",
+        "chatTab": "Messages",
+        "accountTab": "Compte",
+        "createFuelReport": "Nouveau rapport de carburant",
+        "createIssue": "Signaler un problème"
+    },
+    "DriverDashboardScreen": {
+        "tracking": "Suivi :",
+        "location": "Position :",
+        "latitude": "Latitude :",
+        "longitude": "Longitude :",
+        "heading": "Cap :",
+        "altitude": "Altitude :",
+        "activeOrders": "Commandes actives",
+        "speed": "Vitesse"
+    },
+    "DriverOrderManagementScreen": {
+        "dayOrders": "Commandes du {{day}}",
+        "orderCount": {
+            "zero": "{{count}} commande",
+            "one": "{{count}} commande",
+            "other": "{{count}} commandes"
+        },
+        "stopsLeft": {
+            "zero": "{{count}} arrêt restant",
+            "one": "{{count}} arrêt restant",
+            "other": "{{count}} arrêts restants"
+        },
+        "activeOrdersCount": "Commandes actives : {{count}}",
+        "noOrdersFor": "Aucune commande pour le {{date}}"
+    },
+    "OrderCard": {
+        "dateScheduled": "Date prévue :",
+        "podRequired": "Preuve requise :",
+        "dispatchedAt": "Attribuée le :",
+        "eta": "Arrivée prévue :",
+        "ect": "Fin prévue :",
+        "customer": "Client :",
+        "customers": "Clients :"
+    },
+    "AdhocOrderCard": {
+        "pickupDestination": "Lieu d'enlèvement",
+        "accepting": "Acceptation et attribution de la course..."
+    },
+    "OrderActivitySelect": {
+        "requiresProof": "Preuve de livraison requise",
+        "selectActivity": "Choisir l'étape",
+        "updatingActivityFor": "Mise à jour de l'étape pour :"
+    },
+    "OrderScreen": {
+        "waypointCompleted": "Arrêt terminé",
+        "waypointCompletedMessage": "L'étape est terminée pour l'arrêt {{previous}}. Votre destination actuelle est maintenant {{current}}. Vous pouvez changer de destination à tout moment avec le bouton « Destination actuelle ».",
+        "orderNotDispatchedTitle": "Commande pas encore attribuée",
+        "orderNotDispatchedMessage": "Cette commande n'a pas encore été attribuée. Voulez-vous vraiment continuer ?",
+        "warning": "Attention !",
+        "statusUpdated": "Statut de la commande mis à jour : {{status}}",
+        "acceptAdhocTitle": "Accepter cette course ?",
+        "acceptAdhocMessage": "Si vous acceptez cette course, elle vous sera attribuée et démarrera immédiatement.",
+        "accept": "Accepter",
+        "dismissAdhocTitle": "Ignorer cette course ?",
+        "dismissAdhocMessage": "Si vous ignorez cette course, elle ne s'affichera plus parmi les courses disponibles.",
+        "acceptOrder": "Accepter la course",
+        "dismissOrder": "Ignorer la course",
+        "startOrder": "Démarrer la commande",
+        "updateActivity": "Mettre à jour l'étape",
+        "startNavigation": "Lancer la navigation",
+        "orderInformation": "Informations de la commande",
+        "id": "ID",
+        "internalId": "ID interne",
+        "trackingNumber": "Numéro de suivi",
+        "proofOfDelivery": "Preuve de livraison",
+        "type": "Type",
+        "dateCreated": "Date de création",
+        "dateScheduled": "Date prévue",
+        "dateDispatched": "Date d'attribution",
+        "orderRoute": "Itinéraire",
+        "orderProgress": "Avancement",
+        "currentDestination": "Destination actuelle",
+        "nextDestination": "Destination suivante",
+        "totalDistance": "Distance totale",
+        "startTime": "Heure de départ",
+        "currentEta": "Arrivée prévue",
+        "ect": "Fin prévue",
+        "orderNotes": "Notes",
+        "orderProof": "Preuves",
+        "orderPayload": "Contenu de la commande",
+        "customer": "Client",
+        "orderDocuments": "Documents et fichiers",
+        "orderComments": "Commentaires"
+    },
+    "CameraCapture": {
+        "photoCaptured": "Photo prise.",
+        "photosAdded": {
+            "zero": "Aucune photo ajoutée depuis la galerie.",
+            "one": "{{count}} photo ajoutée depuis la galerie.",
+            "other": "{{count}} photos ajoutées depuis la galerie."
+        },
+        "unableToSelect": "Impossible de sélectionner les photos.",
+        "unableToSelectWithCode": "Impossible de sélectionner les photos ({{code}}).",
+        "loadingCamera": "Chargement de l'appareil photo ou attente de l'autorisation...",
+        "gallery": "Galerie",
+        "snap": "Prendre"
+    },
+    "OrderDocumentFiles": {
+        "downloadComplete": "Téléchargement terminé",
+        "imageSaved": "Image enregistrée dans votre galerie.",
+        "downloadFailed": "Échec du téléchargement",
+        "statusCode": "Code d'état : {{code}}",
+        "downloadError": "Une erreur est survenue lors du téléchargement du fichier.",
+        "noDocuments": "Aucun document ni fichier.",
+        "view": "Voir",
+        "download": "Télécharger"
+    },
+    "AccountScreen": {
+        "changeProfilePhotoOptions": {
+            "takePhoto": "Prendre une photo",
+            "photoLibrary": "Galerie photos",
+            "deleteProfilePhoto": "Supprimer la photo de profil"
+        },
+        "profilePhoto": "Photo de profil",
+        "email": "E-mail",
+        "phoneNumber": "Numéro de téléphone",
+        "name": "Nom",
+        "language": "Langue",
+        "theme": "Thème",
+        "deleteAccount": "Supprimer le compte",
+        "termsOfService": "Conditions d'utilisation",
+        "privacyPolicy": "Politique de confidentialité",
+        "tracking": "Suivi",
+        "account": "Compte",
+        "dataProtection": "Protection des données",
+        "clearCache": "Vider le cache",
+        "signOut": "Se déconnecter",
+        "signedOut": "Déconnecté.",
+        "cacheCleared": "Cache vidé.",
+        "schemeChanged": "Mode {{selectedScheme}} activé.",
+        "languageChanged": "Langue : {{selectedLanguage}}.",
+        "photoChanged": "Photo de profil modifiée.",
+        "photoRemoved": "Photo de profil supprimée."
+    },
+    "ProfileScreen": {
+        "organizationChanged": "Vous êtes maintenant dans l'organisation {{selectedOrganization}}."
+    },
+    "AddNewLocationScreen": {
+        "addNewAddress": "Ajouter une adresse",
+        "streetName": "Rue et numéro",
+        "weThinkYoureAroundHere": "Vous semblez être par ici",
+        "cantFindYourAddress": "Vous ne trouvez pas votre adresse ?",
+        "useMapInstead": "Utiliser la carte à la place"
+    },
+    "SetupWarningScreen": {
+        "configurationMissing": "Configuration manquante !",
+        "unconfiguredApp": "L'application ne semble pas correctement configurée.",
+        "envMissing": "est absent de l'environnement !"
+    },
+    "DriverReportScreen": {
+        "issues": "Problèmes",
+        "fuelReports": "Carburant",
+        "issueOn": "Signalé le :",
+        "fuelReported": "Carburant déclaré :",
+        "noIssues": "Aucun signalement",
+        "noFuelReports": "Aucun rapport de carburant"
+    },
+    "LocationPermissionScreen": {
+        "enableLocationServices": "Utilisation de votre position",
+        "enableLocationPrompt": "Fleetbase Navigator collecte votre position précise afin de permettre le suivi des livreurs en temps réel et la mise à jour de l'avancement des commandes pour les répartiteurs et l'équipe des opérations de votre organisation, même lorsque l'application est fermée ou inutilisée. La position est collectée uniquement lorsque vous êtes en ligne et elle est envoyée de façon sécurisée à Fleetbase.",
+        "shareAndContinue": "Autoriser la position et continuer",
+        "privacyPolicy": "Politique de confidentialité",
+        "permissionNeededTitle": "Autorisation de position requise",
+        "enableInSettingsTitle": "Activez la position dans les réglages",
+        "permissionDeniedPrompt": "L'accès à votre position est nécessaire pour vous connecter. Voulez-vous l'autoriser maintenant ?",
+        "locationBlockedPrompt": "L'accès à votre position est bloqué. Ouvrez les réglages et activez-le pour continuer.",
+        "goToSettings": "Ouvrir les réglages"
+    },
+    "ChatKeyboard": {
+        "typeMessage": "Écrire un message"
+    },
+    "ChatParticipants": {
+        "none": "Aucun participant"
+    },
+    "Comment": {
+        "deleteTitle": "Supprimer le commentaire",
+        "deleteMessage": "Voulez-vous vraiment supprimer ce commentaire ?",
+        "reply": "Répondre",
+        "writeReply": "Écrire une réponse...",
+        "publishReply": "Publier la réponse"
+    },
+    "CommentThread": {
+        "invalidTitle": "Commentaire invalide",
+        "invalidMessage": "Le commentaire doit contenir au moins 2 caractères.",
+        "writeComment": "Écrire un commentaire...",
+        "publish": "Publier le commentaire"
+    },
+    "CurrentDestinationSelect": {
+        "select": "Choisir la destination"
+    },
+    "FuelReportForm": {
+        "status": "Statut",
+        "selectStatus": "Choisir le statut du rapport",
+        "odometer": "Compteur kilométrique",
+        "odometerPlaceholder": "Saisissez le kilométrage actuel...",
+        "volume": "Volume",
+        "volumePlaceholder": "Saisissez le volume de carburant...",
+        "cost": "Coût",
+        "costPlaceholder": "Saisissez le coût du carburant...",
+        "publish": "Envoyer le rapport"
+    },
+    "InstanceLinkHandler": {
+        "success": "Connexion à l'instance réussie !"
+    },
+    "IssueForm": {
+        "type": "Type de problème",
+        "selectType": "Choisir le type de problème",
+        "category": "Catégorie",
+        "selectCategory": "Choisir la catégorie",
+        "priority": "Priorité",
+        "selectPriority": "Choisir la priorité",
+        "status": "Statut",
+        "selectStatus": "Choisir le statut",
+        "report": "Description du problème",
+        "reportPlaceholder": "Décrivez le problème...",
+        "publish": "Envoyer le signalement"
+    },
+    "LocationPicker": {
+        "addNew": "Ajouter une adresse"
+    },
+    "MoneyInput": {
+        "search": "Rechercher une devise",
+        "placeholder": "Montant"
+    },
+    "MultipleCustomerAvatars": {
+        "none": "Aucun client"
+    },
+    "OrderCustomerCard": {
+        "call": "Appeler",
+        "email": "E-mail",
+        "chat": "Message"
+    },
+    "OrderPayloadEntities": {
+        "empty": "Aucun article."
+    },
+    "OrderProofOfDelivery": {
+        "none": "Aucune preuve de livraison enregistrée."
+    },
+    "PhoneInput": {
+        "placeholder": "Numéro de téléphone",
+        "searchCountry": "Rechercher un pays"
+    },
+    "QrCodeScanner": {
+        "noCamera": "Aucun appareil photo disponible"
+    },
+    "UnitInput": {
+        "search": "Rechercher une unité",
+        "placeholder": "Volume"
+    },
+    "CoreStack": {
+        "connectionConfig": "Configuration de connexion"
+    },
+    "OrderStack": {
+        "orderHistory": "Historique des commandes"
+    },
+    "ChatHomeScreen": {
+        "title": "Messages"
+    },
+    "ChatParticipantsScreen": {
+        "removeMessage": "Voulez-vous vraiment retirer ce participant de la discussion ?",
+        "removeParticipant": "Retirer le participant",
+        "remove": "Retirer",
+        "participants": "Participants",
+        "addParticipant": "Ajouter un participant",
+        "selectParticipant": "Choisir un participant"
+    },
+    "CreateAccountScreen": {
+        "title": "Créer un compte",
+        "namePlaceholder": "Votre nom",
+        "haveAccount": "Vous avez déjà un compte ? Se connecter"
+    },
+    "CreateChatChannelScreen": {
+        "nameRequired": "Le nom de la discussion est obligatoire.",
+        "unselect": "Retirer",
+        "select": "Ajouter",
+        "title": "Nouvelle discussion",
+        "channelName": "Nom de la discussion",
+        "namePlaceholder": "Saisissez le nom de la discussion...",
+        "selectParticipants": "Choisir les participants :",
+        "created": "Discussion créée : {{name}}"
+    },
+    "DriverProfileScreen": {
+        "organization": "Organisation"
+    },
+    "Reports": {
+        "status": "Statut :",
+        "priority": "Priorité :",
+        "report": "Description :",
+        "type": "Type :",
+        "category": "Catégorie :",
+        "vehicle": "Véhicule :",
+        "reporter": "Signalé par :",
+        "odometer": "Compteur :",
+        "volume": "Volume :",
+        "cost": "Coût :",
+        "location": "Lieu du signalement :"
+    },
+    "EditLocationCoordScreen": {
+        "save": "Enregistrer la position"
+    },
+    "EditLocationScreen": {
+        "saved": "Adresse enregistrée.",
+        "typeError": "Impossible de choisir le type d'adresse.",
+        "apartment": "Appartement",
+        "house": "Maison",
+        "office": "Bureau",
+        "hotel": "Hôtel",
+        "hospital": "Hôpital",
+        "school": "École",
+        "other": "Autre",
+        "address": "Adresse",
+        "locationType": "Type d'adresse",
+        "details": "Détails de l'adresse",
+        "detailsHint": "Ajoutez des précisions sur l'adresse.",
+        "name": "Nom de l'adresse",
+        "street1": "Rue ou boîte postale",
+        "street2": "Appartement, bâtiment, étage, etc.",
+        "neighborhood": "Quartier / secteur",
+        "city": "Ville",
+        "postalCode": "Code postal",
+        "instructions": "Instructions pour le livreur",
+        "meetingPoint": "Où exactement devons-nous vous retrouver ?",
+        "makeDefault": "Définir comme adresse par défaut",
+        "delete": "Supprimer l'adresse",
+        "save": "Enregistrer l'adresse"
+    },
+    "EntityScreen": {
+        "details": "Détails",
+        "sku": "Référence",
+        "dimensions": "Dimensions (L x l x H)",
+        "weight": "Poids"
+    },
+    "FuelReportScreen": {
+        "deleteMessage": "Voulez-vous vraiment supprimer ce rapport de carburant ?",
+        "delete": "Supprimer le rapport",
+        "deleting": "Suppression du rapport..."
+    },
+    "InstanceLinkScreen": {
+        "saved": "Configuration de connexion enregistrée.",
+        "reset": "Configuration de connexion réinitialisée.",
+        "hostPlaceholder": "Adresse du serveur Fleetbase...",
+        "keyPlaceholder": "Clé API du serveur Fleetbase...",
+        "socketHostPlaceholder": "Adresse SocketCluster du serveur...",
+        "socketPortPlaceholder": "Port SocketCluster du serveur...",
+        "saveChanges": "Enregistrer"
+    },
+    "IssueScreen": {
+        "deleteMessage": "Voulez-vous vraiment supprimer ce signalement ?",
+        "delete": "Supprimer le signalement",
+        "deleting": "Suppression du signalement..."
+    },
+    "LoginScreen": {
+        "loggedInWith": "Connecté avec {{provider}}"
+    },
+    "enums": {
+        "IssueType": {
+            "VEHICLE": "Véhicule",
+            "DRIVER": "Livreur",
+            "ROUTE": "Itinéraire",
+            "PAYLOAD_CARGO": "Marchandise",
+            "SOFTWARE_TECHNICAL": "Logiciel / technique",
+            "OPERATIONAL": "Opérations",
+            "CUSTOMER": "Client",
+            "SECURITY": "Sécurité",
+            "ENVIRONMENTAL_SUSTAINABILITY": "Environnement"
+        },
+        "IssuePriority": {
+            "LOW": "Basse",
+            "MEDIUM": "Moyenne",
+            "HIGH": "Haute",
+            "CRITICAL": "Critique",
+            "SCHEDULED_MAINTENANCE": "Entretien planifié",
+            "OPERATIONAL_SUGGESTION": "Suggestion d'amélioration"
+        },
+        "IssueStatus": {
+            "PENDING": "En attente",
+            "IN_PROGRESS": "En cours",
+            "BACKLOGGED": "Reporté",
+            "REQUIRES_UPDATE": "Mise à jour requise",
+            "IN_REVIEW": "En revue",
+            "RE_OPENED": "Rouvert",
+            "DUPLICATE": "Doublon",
+            "PENDING_REVIEW": "En attente de revue",
+            "ESCALATED": "Escaladé",
+            "COMPLETED": "Résolu",
+            "CANCELED": "Annulé"
+        },
+        "FuelReportStatus": {
+            "DRAFT": "Brouillon",
+            "PENDING_APPROVAL": "En attente d'approbation",
+            "APPROVED": "Approuvé",
+            "REJECTED": "Refusé",
+            "REVISED": "Révisé",
+            "SUBMITTED": "Envoyé",
+            "IN_REVIEW": "En revue",
+            "CONFIRMED": "Confirmé",
+            "ARCHIVED": "Archivé",
+            "CANCELED": "Annulé"
+        }
+    },
+    "issueCategories": {
+        "mechanical_problems": "Problèmes mécaniques",
+        "cosmetic_damages": "Dégâts esthétiques",
+        "tire_issues": "Problèmes de pneus",
+        "electronics_and_instruments": "Électronique et instruments",
+        "maintenance_alerts": "Alertes d'entretien",
+        "fuel_efficiency_issues": "Consommation de carburant",
+        "behavior_concerns": "Comportement",
+        "documentation": "Documents",
+        "time_management": "Gestion du temps",
+        "communication": "Communication",
+        "training_needs": "Besoins de formation",
+        "health_and_safety_violations": "Manquements à l'hygiène et à la sécurité",
+        "inefficient_routes": "Itinéraires inefficaces",
+        "safety_concerns": "Problèmes de sécurité",
+        "blocked_routes": "Routes bloquées",
+        "environmental_considerations": "Considérations environnementales",
+        "unfavorable_weather_conditions": "Météo défavorable",
+        "damaged_goods": "Marchandise endommagée",
+        "misplaced_goods": "Marchandise égarée",
+        "documentation_issues": "Problèmes de documents",
+        "temperature_sensitive_goods": "Marchandise sensible à la température",
+        "incorrect_cargo_loading": "Chargement incorrect",
+        "bugs": "Bugs",
+        "ui_ux_concerns": "Problèmes d'interface",
+        "integration_failures": "Échecs d'intégration",
+        "performance": "Performances",
+        "feature_requests": "Demandes de fonctionnalités",
+        "security_vulnerabilities": "Failles de sécurité",
+        "compliance": "Conformité",
+        "resource_allocation": "Répartition des ressources",
+        "cost_overruns": "Dépassements de coûts",
+        "vendor_management_issues": "Problèmes fournisseurs",
+        "service_quality": "Qualité de service",
+        "billing_discrepancies": "Erreurs de facturation",
+        "communication_breakdown": "Rupture de communication",
+        "feedback_and_suggestions": "Avis et suggestions",
+        "order_errors": "Erreurs de commande",
+        "unauthorized_access": "Accès non autorisé",
+        "data_concerns": "Problèmes de données",
+        "physical_security": "Sécurité physique",
+        "data_integrity_issues": "Intégrité des données",
+        "fuel_consumption": "Consommation de carburant",
+        "carbon_footprint": "Empreinte carbone",
+        "waste_management": "Gestion des déchets",
+        "green_initiatives_opportunities": "Initiatives écologiques"
+    },
+    "AlertPromptBox": {
+        "confirmMessage": "Voulez-vous vraiment continuer ?"
+    },
+    "BottomSheetSelect": {
+        "placeholder": "Choisir une option",
+        "search": "Rechercher"
+    },
+    "ExpandableSelect": {
+        "toggle": "Afficher ou masquer les options"
+    },
+    "OrderTotal": {
+        "deliveryFee": "Frais de livraison",
+        "deliveryTip": "Pourboire"
+    },
+    "OrderWaypointList": {
+        "expand": "Appuyer pour afficher",
+        "collapse": "Appuyer pour masquer"
+    },
+    "LocationContext": {
+        "driverLocation": "Position du livreur",
+        "rationaleTitle": "Autoriser Fleetbase Navigator à accéder à votre position",
+        "allow": "Autoriser",
+        "deny": "Refuser"
+    },
+    "EditFuelReportScreen": {
+        "submit": "Mettre à jour le rapport"
+    },
+    "EditIssueScreen": {
+        "submit": "Enregistrer le signalement"
+    }
+}

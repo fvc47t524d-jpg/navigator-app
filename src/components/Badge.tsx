@@ -1,6 +1,7 @@
 import React from 'react';
 import { XStack, YStack, Text } from 'tamagui';
 import { titleize, getColorFromStatus } from '../utils/format';
+import { translateStatus } from '../utils/localize';
 
 /**
  * Given a base color and whether it's inverted or not,
@@ -61,7 +62,7 @@ const Badge = ({ status, color, inverted = false, icon, iconPlacement = 'left', 
             {iconPlacement === 'left' && iconElement}
             {status && (
                 <Text color={text} fontWeight='bold' fontSize={fontSize} numberOfLines={numberOfLines}>
-                    {titleize(status)}
+                    {translateStatus(status, titleize(status))}
                 </Text>
             )}
             {children}

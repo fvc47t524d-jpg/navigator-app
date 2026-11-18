@@ -7,6 +7,7 @@ import { useTempStore } from '../contexts/TempStoreContext';
 import { later } from '../utils';
 import useFleetbase from '../hooks/use-fleetbase';
 import FuelReportForm from '../components/FuelReportForm';
+import { translate as t } from '../utils/localize';
 
 const EditFuelReportScreen = () => {
     const navigation = useNavigation();
@@ -41,7 +42,7 @@ const EditFuelReportScreen = () => {
 
     return (
         <YStack flex={1} bg='$background'>
-            <FuelReportForm value={fuelReport} onSubmit={handleUpdateReport} isSubmitting={isLoading} submitText='Update Fuel Report' />
+            <FuelReportForm value={fuelReport} onSubmit={handleUpdateReport} isSubmitting={isLoading} submitText={t('EditFuelReportScreen.submit')} />
         </YStack>
     );
 };

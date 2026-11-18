@@ -9,6 +9,7 @@ import { abbreviateName, navigatorConfig, showActionSheet } from '../utils';
 import { useAuth } from '../contexts/AuthContext';
 import { useLanguage } from '../contexts/LanguageContext';
 import storage from '../utils/storage';
+import { translate as t } from '../utils/localize';
 
 const DriverProfileScreen = () => {
     const theme = useTheme();
@@ -54,10 +55,10 @@ const DriverProfileScreen = () => {
 
     const menuItems = useMemo(() => {
         const items = [
-            { id: '1', title: 'Account', screen: 'DriverAccount' },
+            { id: '1', title: t('AccountScreen.account'), screen: 'DriverAccount' },
             {
                 id: '2',
-                title: 'Organization',
+                title: t('DriverProfileScreen.organization'),
                 handler: () => handleSelectOrganization(),
                 rightComponent: (
                     <Text color='$textSecondary' fontSize={13} numberOfLines={1}>

@@ -5,6 +5,8 @@ import { useTheme, View, Text, Button, XStack, YStack, Input } from 'tamagui';
 import { Portal } from '@gorhom/portal';
 import { titleize as titleizeString } from 'inflected';
 import useAppTheme from '../hooks/use-app-theme';
+import { isObject } from '../utils';
+import { translate as t } from '../utils/localize';
 
 const BottomSheetSelect = forwardRef(
     (
@@ -16,8 +18,8 @@ const BottomSheetSelect = forwardRef(
             optionValue,
             optionLabel,
             renderOption,
-            placeholder = 'Select an option',
-            searchPlaceholder = 'Search options',
+            placeholder = t('BottomSheetSelect.placeholder'),
+            searchPlaceholder = t('BottomSheetSelect.search'),
             title,
             portalHost = 'MainPortal',
             snapTo = '90%',
@@ -94,6 +96,15 @@ const BottomSheetSelect = forwardRef(
 
         const renderSelected = useCallback(() => {
             if (typeof selected === 'string') {
+                // When options carry a separate label (e.g. a translated one), show that label for the stored value.
+                if (typeof optionValue === 'string' && typeof optionLabel === 'string' && Array.isArray(options)) {
+                    // Values may be stored as keys ('IN_PROGRESS') or display text ('In Progress'); compare loosely.
+                    const normalize = (value) => String(value).toLowerCase().replace(/[\s-]+/g, '_');
+                    const match = options.find((option) => isObject(option) && normalize(option[optionValue]) === normalize(selected));
+                    if (match) {
+                        return match[optionLabel];
+                    }
+                }
                 if (humanize === true) {
                     return titleizeString(selected);
                 }
@@ -103,7 +114,7 @@ const BottomSheetSelect = forwardRef(
             if (typeof optionLabel === 'string' && isObject(selected)) {
                 return selected[optionLabel];
             }
-        }, [selected]);
+        }, [selected, options, optionLabel, optionValue]);
 
         const handleBottomSheetPositionChange = useCallback(
             (fromIndex, toIndex) => {

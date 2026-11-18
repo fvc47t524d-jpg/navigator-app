@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faPaperPlane, faRotate } from '@fortawesome/free-solid-svg-icons';
 import useAppTheme from '../hooks/use-app-theme';
 import Comment from './Comment';
+import { translate as t } from '../utils/localize';
 
 const CommentThread = ({ comments: initialComments = [], subject, onReloadComments, isReloading }) => {
     const { isDarkMode } = useAppTheme();
@@ -21,7 +22,7 @@ const CommentThread = ({ comments: initialComments = [], subject, onReloadCommen
 
     const isCommentInvalid = (comment) => {
         if (!comment || comment.trim().length < 2) {
-            Alert.alert('Invalid Comment', 'Comment must be at least 2 characters.');
+            Alert.alert(t('CommentThread.invalidTitle'), t('CommentThread.invalidMessage'));
             return true;
         }
         return false;
@@ -52,7 +53,7 @@ const CommentThread = ({ comments: initialComments = [], subject, onReloadCommen
             <YStack>
                 <TextArea
                     value={input}
-                    placeholder='Write a comment...'
+                    placeholder={t('CommentThread.writeComment')}
                     onChangeText={setInput}
                     width='100%'
                     bg={isDarkMode ? '$secondary' : '$white'}
@@ -77,7 +78,7 @@ const CommentThread = ({ comments: initialComments = [], subject, onReloadCommen
                         <Button.Icon>
                             <FontAwesomeIcon icon={faPaperPlane} color={theme['$infoText'].val} />
                         </Button.Icon>
-                        <Button.Text color='$infoText'>Publish Comment</Button.Text>
+                        <Button.Text color='$infoText'>{t('CommentThread.publish')}</Button.Text>
                     </Button>
                 </XStack>
             </YStack>

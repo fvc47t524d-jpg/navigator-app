@@ -7,6 +7,7 @@ import Collapsible from 'react-native-collapsible';
 import Badge from './Badge';
 import { isArray, isEmpty } from '../utils';
 import { lowercase } from '../utils/format';
+import { translate as t } from '../utils/localize';
 
 export const COLLAPSE_POINT = 2;
 export const CIRCLE_SIZE = 32;
@@ -110,7 +111,7 @@ const WaypointCollapseButton: React.FC<WaypointCollapseButtonProps> = ({ isColla
                     <XStack alignItems='center'>
                         <FontAwesomeIcon icon={faEye} style={{ marginRight: 8, color: theme['$warningText'].val }} />
                         <Text fontWeight='bold' color='$warningText' {...textStyle}>
-                            {isCollapsed ? 'Tap to expand' : 'Tap to collapse'}
+                            {isCollapsed ? t('OrderWaypointList.expand') : t('OrderWaypointList.collapse')}
                         </Text>
                     </XStack>
                     <Text color='$warningText' {...textStyle}>

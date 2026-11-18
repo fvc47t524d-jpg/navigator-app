@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faBox, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { formatDuration, titleize, formatWhatsAppTimestamp } from '../utils/format';
 import { Place } from '@fleetbase/sdk';
-import { format as formatDate } from 'date-fns';
+import { formatDateLocalized as formatDate } from '../utils/localize';
 import useFleetbase from '../hooks/use-fleetbase';
 import useOrderResource from '../hooks/use-order-resource';
 import useAppTheme from '../hooks/use-app-theme';
@@ -15,6 +15,7 @@ import OrderWaypointList, { WaypointItem } from './OrderWaypointList';
 import MultipleCustomerAvatars from './MultipleCustomerAvatars';
 import LoadingText from './LoadingText';
 import Badge from './Badge';
+import { translate as t } from '../utils/localize';
 
 const INFO_FIELD_VALUE_MIN_HEIGHT = 30;
 export const PastOrderCard = ({ order, onPress }) => {
@@ -85,7 +86,7 @@ export const PastOrderCard = ({ order, onPress }) => {
                             icon={faLocationDot}
                             iconColor={theme['$textPrimary'].val}
                             waypoint={destination.serialize()}
-                            title='Current Destination'
+                            title={t('OrderScreen.currentDestination')}
                             titleStyle={{ fontWeight: 'bold', fontSize: 14, textTransform: 'uppercase' }}
                         />
                     </YStack>

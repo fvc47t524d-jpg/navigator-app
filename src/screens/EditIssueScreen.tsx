@@ -6,6 +6,7 @@ import { useTempStore } from '../contexts/TempStoreContext';
 import { later } from '../utils';
 import useFleetbase from '../hooks/use-fleetbase';
 import IssueForm from '../components/IssueForm';
+import { translate as t } from '../utils/localize';
 
 const EditIssueScreen = () => {
     const navigation = useNavigation();
@@ -39,7 +40,7 @@ const EditIssueScreen = () => {
 
     return (
         <YStack flex={1} bg='$background'>
-            <IssueForm value={issue} onSubmit={handleSaveIssue} isSubmitting={isLoading} submitText='Save Issue' />
+            <IssueForm value={issue} onSubmit={handleSaveIssue} isSubmitting={isLoading} submitText={t('EditIssueScreen.submit')} />
         </YStack>
     );
 };

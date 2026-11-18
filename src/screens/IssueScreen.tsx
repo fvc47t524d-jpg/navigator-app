@@ -15,6 +15,8 @@ import LoadingOverlay from '../components/LoadingOverlay';
 import HeaderButton from '../components/HeaderButton';
 import PlaceMapView from '../components/PlaceMapView';
 import useFleetbase from '../hooks/use-fleetbase';
+import { translate as t } from '../utils/localize';
+import { enumLabel, issueCategoryLabel } from '../constants/Enums';
 
 const IssueScreen = () => {
     const theme = useTheme();
@@ -41,9 +43,9 @@ const IssueScreen = () => {
             }
         };
 
-        Alert.alert('Confirm Deletion', 'Are you sure you want to delete this Issue?', [
-            { text: 'Cancel', style: 'cancel' },
-            { text: 'Delete Issue', onPress: handleDelete },
+        Alert.alert(t('common.confirmDeletion'), t('IssueScreen.deleteMessage'), [
+            { text: t('common.cancel'), style: 'cancel' },
+            { text: t('IssueScreen.delete'), onPress: handleDelete },
         ]);
     }, [adapter]);
 
@@ -63,17 +65,17 @@ const IssueScreen = () => {
                     <HeaderButton icon={faTimes} onPress={() => navigation.goBack()} />
                 </XStack>
             </Portal>
-            <LoadingOverlay visible={isLoading} text='Deleting Issue...' />
+            <LoadingOverlay visible={isLoading} text={t('IssueScreen.deleting')} />
             <YStack py='$3' space='$3'>
                 <XStack px='$3' alignItems='center' space='$3'>
                     <YStack alignItems='flex-start'>
                         <Text color='$textSecondary' fontSize={17} fontWeight='bold'>
-                            Type:
+                            {t('Reports.type')}
                         </Text>
                     </YStack>
                     <YStack flex={1} alignItems='flex-end'>
                         <Text color='$textPrimary' fontSize={17} numberOfLines={1}>
-                            {humanize(issue.type)}
+                            {enumLabel('IssueType', issue.type, humanize(issue.type))}
                         </Text>
                     </YStack>
                 </XStack>
@@ -81,12 +83,12 @@ const IssueScreen = () => {
                 <XStack px='$3' alignItems='center' space='$3'>
                     <YStack alignItems='flex-start'>
                         <Text color='$textSecondary' fontSize={17} fontWeight='bold'>
-                            Category:
+                            {t('Reports.category')}
                         </Text>
                     </YStack>
                     <YStack flex={1} alignItems='flex-end'>
                         <Text color='$textPrimary' fontSize={17} numberOfLines={1}>
-                            {titleize(issue.category)}
+                            {issueCategoryLabel(issue.category, titleize(issue.category))}
                         </Text>
                     </YStack>
                 </XStack>
@@ -94,12 +96,12 @@ const IssueScreen = () => {
                 <XStack px='$3' alignItems='center' space='$3'>
                     <YStack alignItems='flex-start'>
                         <Text color='$textSecondary' fontSize={17} fontWeight='bold'>
-                            Vehicle:
+                            {t('Reports.vehicle')}
                         </Text>
                     </YStack>
                     <YStack flex={1} alignItems='flex-end'>
                         <Text color='$textPrimary' fontSize={17} numberOfLines={1}>
-                            {issue.vehicle_name ?? 'N/A'}
+                            {issue.vehicle_name ?? t('common.notApplicable')}
                         </Text>
                     </YStack>
                 </XStack>
@@ -107,7 +109,7 @@ const IssueScreen = () => {
                 <XStack px='$3' alignItems='center' space='$3'>
                     <YStack alignItems='flex-start'>
                         <Text color='$textSecondary' fontSize={17} fontWeight='bold'>
-                            Priority:
+                            {t('Reports.priority')}
                         </Text>
                     </YStack>
                     <YStack flex={1} alignItems='flex-end'>
@@ -118,7 +120,7 @@ const IssueScreen = () => {
                 <XStack px='$3' alignItems='center' space='$3'>
                     <YStack alignItems='flex-start'>
                         <Text color='$textSecondary' fontSize={17} fontWeight='bold'>
-                            Status:
+                            {t('Reports.status')}
                         </Text>
                     </YStack>
                     <YStack flex={1} alignItems='flex-end'>
@@ -129,7 +131,7 @@ const IssueScreen = () => {
                 <YStack px='$3' space='$3'>
                     <YStack alignItems='flex-start'>
                         <Text color='$textSecondary' fontSize={17} fontWeight='bold'>
-                            Report:
+                            {t('Reports.report')}
                         </Text>
                     </YStack>
                     <YStack py='$2'>
@@ -142,7 +144,7 @@ const IssueScreen = () => {
                 <YStack px='$3' space='$3'>
                     <YStack alignItems='flex-start'>
                         <Text color='$textSecondary' fontSize={17} fontWeight='bold'>
-                            Report Location:
+                            {t('Reports.location')}
                         </Text>
                     </YStack>
                     <YStack flex={1} alignItems='flex-start'>

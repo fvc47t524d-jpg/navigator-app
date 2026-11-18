@@ -6,6 +6,7 @@ import { useTheme, View, Text, Button, XStack, YStack, Input } from 'tamagui';
 import { Portal } from '@gorhom/portal';
 import { getCountryByPhoneCode, getCountryByISO2, parsePhoneNumber, debounce } from '../utils';
 import useAppTheme from '../hooks/use-app-theme';
+import { translate as t } from '../utils/localize';
 
 function getDefaultValues(value = null, fallbackCountry = 'US') {
     if (typeof value === 'string' && value.startsWith('+')) {
@@ -91,7 +92,7 @@ const PhoneInput = ({ value, onChange, bg, width = '100%', defaultCountryCode = 
                     size={size}
                     ref={phoneInputRef}
                     flex={1}
-                    placeholder='Enter phone number'
+                    placeholder={t('PhoneInput.placeholder')}
                     keyboardType='phone-pad'
                     value={phoneNumber}
                     onChangeText={setPhoneNumber}
@@ -123,7 +124,7 @@ const PhoneInput = ({ value, onChange, bg, width = '100%', defaultCountryCode = 
                     <YStack px='$2'>
                         <BottomSheetTextInput
                             ref={searchInputRef}
-                            placeholder='Search country'
+                            placeholder={t('PhoneInput.searchCountry')}
                             onChangeText={setSearchTerm}
                             autoCapitalize={false}
                             autoComplete='off'
