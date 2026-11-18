@@ -3,6 +3,7 @@ import { useTheme } from 'tamagui';
 import { format } from 'date-fns';
 import { Order } from '@fleetbase/sdk';
 import { useAuth } from './AuthContext';
+import { useLocation } from './LocationContext';
 import useFleetbase from '../hooks/use-fleetbase';
 import useStorage from '../hooks/use-storage';
 import { isArray } from '../utils';
@@ -15,11 +16,20 @@ function restoreCollection(collection, adapter) {
     return collection.map((json) => new Order(json, adapter));
 }
 
+// Statuses after which an order no longer needs live driver tracking.
+const FINISHED_ORDER_STATUSES = new Set(['completed', 'canceled', 'order_canceled']);
+
+/** An order is in progress once the driver has started it, until it is completed or canceled. */
+export function isOrderInProgress(order): boolean {
+    return Boolean(order && order.started && !FINISHED_ORDER_STATUSES.has(order.status));
+}
+
 const OrderManagerContext = createContext(null);
 
 export const OrderManagerProvider: React.FC = ({ children }) => {
     const theme = useTheme();
     const { driver } = useAuth();
+    const { setKeepTrackingActive } = useLocation();
     const { fleetbase, adapter } = useFleetbase();
     const today = format(new Date(), 'yyyy-MM-dd HH:mm:ssXXX');
 
@@ -206,6 +216,16 @@ export const OrderManagerProvider: React.FC = ({ children }) => {
 
         update(updatedStorage);
     };
+
+    // Keep location tracking fully active while the driver has an order in progress. Uses the active
+    // orders list only: it is updated in place whenever an order is started, progressed or completed
+    // in the app, and re-fetched from the server on launch and when an order update is pushed, so a
+    // stale cached copy elsewhere cannot keep GPS on indefinitely.
+    const hasOrderInProgress = useMemo(() => allActiveOrders.some(isOrderInProgress), [allActiveOrders]);
+
+    useEffect(() => {
+        setKeepTrackingActive(Boolean(driver) && hasOrderInProgress);
+    }, [driver, hasOrderInProgress, setKeepTrackingActive]);
 
     // Trigger active and recent order fetches when driver and fleetbase are available.
     useEffect(() => {

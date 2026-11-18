@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, useCallback, useContext, useMemo } from 'react';
+import React, { createContext, useState, useEffect, useCallback, useContext, useMemo, useRef } from 'react';
 import { AppState, Platform } from 'react-native';
 import BackgroundGeolocation from 'react-native-background-geolocation';
 import BackgroundFetch from 'react-native-background-fetch';
@@ -14,6 +14,8 @@ const LocationContext = createContext({
     isTracking: false,
     startTracking: () => {},
     stopTracking: () => {},
+    keepTrackingActive: false,
+    setKeepTrackingActive: (_active: boolean) => {},
 });
 
 const getLocationPermission = () => (Platform.OS === 'ios' ? PERMISSIONS.IOS.LOCATION_WHEN_IN_USE : PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
@@ -26,6 +28,10 @@ export const LocationProvider = ({ children }) => {
     const [authToken] = useStorage('_driver_token');
     const [location, setLocation] = useStorage(`${driver?.id ?? 'anon'}_location`, {});
     const [isTracking, setIsTracking] = useState(false);
+    // While true (the driver has an order in progress), tracking stays in "moving" mode instead of
+    // relying on motion-activity detection, which can leave GPS off while the driver is en route.
+    const [keepTrackingActive, setKeepTrackingActive] = useState(false);
+    const isPaceForcedRef = useRef(false);
     const [permissionStatus, setPermissionStatus] = useState(Platform.OS === 'web' ? RESULTS.GRANTED : RESULTS.DENIED);
     const canTrackLocation = isLocationTrackingAllowed({ driver, isOnline, permissionStatus });
     const hasStoredLocation = !isEmpty(location);
@@ -200,6 +206,40 @@ export const LocationProvider = ({ children }) => {
         };
     }, [canTrackLocation, onLocation, onLocationError, onMotionChange, getHttpConfig, startTracking, stopTracking]);
 
+    // Keep GPS tracking active while an order is in progress.
+    //
+    // By default the plugin enters a stationary state after `stopTimeout` minutes without detected
+    // motion and switches GPS off until the device's motion-activity sensors report movement. During
+    // a delivery that can leave dispatchers without live positions (e.g. after waiting at a pickup).
+    // So while an order is in progress we disable stop-detection and force the moving state; once no
+    // order is in progress we restore stop-detection and hand control back to motion detection.
+    useEffect(() => {
+        if (!canTrackLocation || !isTracking) {
+            isPaceForcedRef.current = false;
+            return;
+        }
+
+        const applyTrackingMode = async () => {
+            try {
+                if (keepTrackingActive) {
+                    await BackgroundGeolocation.setConfig({ disableStopDetection: true });
+                    await BackgroundGeolocation.changePace(true);
+                    isPaceForcedRef.current = true;
+                    console.log('[BackgroundGeolocation] Order in progress: tracking kept active');
+                } else if (isPaceForcedRef.current) {
+                    await BackgroundGeolocation.setConfig({ disableStopDetection: false });
+                    await BackgroundGeolocation.changePace(false);
+                    isPaceForcedRef.current = false;
+                    console.log('[BackgroundGeolocation] No order in progress: motion detection restored');
+                }
+            } catch (error) {
+                console.warn('[BackgroundGeolocation] Unable to update tracking mode:', error);
+            }
+        };
+
+        applyTrackingMode();
+    }, [canTrackLocation, isTracking, keepTrackingActive]);
+
     // Configure BackgroundFetch for periodic tasks.
     useEffect(() => {
         if (!canTrackLocation) {
@@ -233,8 +273,8 @@ export const LocationProvider = ({ children }) => {
 
     // Memoize the context value to prevent unnecessary re-renders.
     const value = useMemo(
-        () => ({ location, isTracking, startTracking, stopTracking, getDriverLocationAsPlace, trackLocation }),
-        [location, isTracking, startTracking, stopTracking, getDriverLocationAsPlace, trackLocation]
+        () => ({ location, isTracking, startTracking, stopTracking, getDriverLocationAsPlace, trackLocation, keepTrackingActive, setKeepTrackingActive }),
+        [location, isTracking, startTracking, stopTracking, getDriverLocationAsPlace, trackLocation, keepTrackingActive]
     );
 
     return <LocationContext.Provider value={value}>{children}</LocationContext.Provider>;
